@@ -90,14 +90,10 @@
     <Compile Include="BusinessOperations\Auth\RecoveryPasswordOperation.cs" />
     <Compile Include="BusinessOperations\Auth\SetPasswordOperation.cs" />
     <Compile Include="BusinessOperations\BaseOperation.cs" />
-    <Compile Include="BusinessOperations\Cart\LoadCartOperation.cs" />
     <Compile Include="BusinessOperations\Comments\AddCommentOperation.cs" />
     <Compile Include="BusinessOperations\Comments\DeleteCommentsOperation.cs" />
     <Compile Include="BusinessOperations\Comments\EditCommentsOperation.cs" />
     <Compile Include="BusinessOperations\Comments\LoadCommentsOperation.cs" />
-    <Compile Include="BusinessOperations\Games\LoadGamesOperation.cs" />
-    <Compile Include="BusinessOperations\Games\LoadGameOperation.cs" />
-    <Compile Include="BusinessOperations\Games\UpdateGameOperation.cs" />
     <Compile Include="BusinessOperations\HashHelper.cs" />
     <Compile Include="BusinessOperations\Images\DeleteImageOperation.cs" />
     <Compile Include="BusinessOperations\Orders\SendMailOperation.cs" />
@@ -127,10 +123,8 @@
     <Compile Include="DataBase\Security\User.cs" />
     <Compile Include="Except\ActionNotAllowedException.cs" />
     <Compile Include="Except\ReHouseException.cs" />
-    <Compile Include="Helpers\CartGamesModel.cs" />
     <Compile Include="Helpers\CartProductsModel.cs" />
     <Compile Include="Helpers\CartModel.cs" />
-    <Compile Include="Helpers\FullCartModel.cs" />
     <Compile Include="Helpers\GameModel.cs" />
     <Compile Include="Helpers\GenerateHash.cs" />
     <Compile Include="Helpers\SmtpEmailSender.cs" />

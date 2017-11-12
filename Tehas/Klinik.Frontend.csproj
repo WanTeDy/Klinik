@@ -160,13 +160,11 @@
     <Compile Include="Areas\Cabinet\Controllers\AuthorizeController.cs" />
     <Compile Include="Areas\Cabinet\Controllers\ImageController.cs" />
     <Compile Include="Areas\Cabinet\Controllers\MainController.cs" />
-    <Compile Include="Areas\Cabinet\Controllers\GameController.cs" />
     <Compile Include="Areas\Cabinet\Controllers\CommentController.cs" />
     <Compile Include="Areas\Cabinet\Controllers\MenuController.cs" />
     <Compile Include="Areas\Cabinet\Controllers\PageController.cs" />
     <Compile Include="Areas\Cabinet\Models\ImageDeleteModel.cs" />
     <Compile Include="Areas\Cabinet\Models\ProductDeleteModel.cs" />
-    <Compile Include="Areas\Cabinet\Models\GameModel.cs" />
     <Compile Include="Areas\Cabinet\Models\ProductModel.cs" />
     <Compile Include="Areas\Cabinet\Models\MenuListModel.cs" />
     <Compile Include="Areas\Cabinet\Models\CategoryModel.cs" />
@@ -180,7 +178,6 @@
     <Compile Include="Models\MenuModel.cs" />
     <Compile Include="Models\EmailModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
-    <Compile Include="Models\FullCartModel.cs" />
     <Compile Include="Models\PageModel.cs" />
     <Compile Include="Models\PagingInfo.cs" />
     <Compile Include="Models\RecoveryPasswordModel.cs" />

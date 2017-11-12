@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Klinik.Utils.BusinessOperations.Cart;
 using Klinik.Utils.DataBase.Emails;
 using Klinik.Utils.Helpers;
-using Klinik.Utils.Models;
 
 namespace Klinik.Utils.BusinessOperations.Orders
 {

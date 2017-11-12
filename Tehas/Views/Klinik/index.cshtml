@@ -3,29 +3,22 @@
     @Scripts.Render("~/Scripts/jqueryval")
     <script>
         function SendMessageOnComplete(data, resul, xhr) {
-            if (data.url) {
-                // if the server returned a JSON object containing an url
-                // property we redirect the browser to that url
-                window.location.href = data.url;
+            if (data.Success) {
+                $('#email-mes').toggle(750, function () {
+                    $('#email-mes').toggle(3500);
+                });
             }
         }
         function SendFeedbackOnComplete(data, resul, xhr) {
-            if (data.url) {
-                // if the server returned a JSON object containing an url
-                // property we redirect the browser to that url
-                window.location.href = data.url;
+            if (data.Success) {
+                $('#feedback-mes').toggle(750, function () {
+                    $('#feedback-mes').toggle(3500);
+                });
             }
         }
-        var hidden = true;
         function makeFeedback(e) {
             e.preventDefault();
-            if (hidden) {
-                hidden = false;
-                $('._comment').show(1000)
-            } else {
-                hidden = true;
-                $('._comment').hide(1000)
-            }
+            $('._comment').toggle(750);
         }
     </script>
 }
@@ -404,11 +397,11 @@
     </div>
     <a href="#" onclick="makeFeedback(event);" class="todo_comm">Оставить отзыв</a>
 </div>
-<div class="_comment">
+<div class="_comment" style="display:none;">
     <div id="send_feedback">
         @Html.Partial("_feedback")
     </div>
-    <p style="display:none;">Спасибо за ваш отзыв!</p>
+    <p id="feedback-mes" style="display:none;">Спасибо за ваш отзыв!</p>
 </div>
 
 <div class="h2" id="contacts"><h2>Кон<span class="blue">такты</span></h2></div>
@@ -428,7 +421,7 @@
         <div id="send_message">
             @Html.Partial("_message")
         </div>
-        <p style="display:none;">Мы свяжемся с вами в ближайшее время.</p>
+        <p id="email-mes" style="display:none;">Мы свяжемся с вами в ближайшее время.</p>
     </div>
 
     <div class="map">
