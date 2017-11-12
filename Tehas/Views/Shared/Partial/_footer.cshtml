@@ -1,0 +1,38 @@
+﻿<div class="footer">
+    <div class="logo2">
+        <a href="/"><img src="~/Content/images/logo2.png">
+        </a>
+    </div>
+    <div class="social1">
+        <div class="fb"><a href="https://www.facebook.com/profile.php?id=100014429629385" target="_blank"></a></div>
+        <div class="insta"><a href="" target="_blank"></a></div>
+    </div>
+    <p>© 2017 Web-студия "Web Galaxy"</p>
+    <div id="toTop">↑</div>
+    <a href="#" id="popup__toggle" onclick="return false;">
+        <div class="circlephone" style="transform-origin: center;">
+        </div>
+        <div class="circle-fill" style="transform-origin: center;">
+        </div>
+        <div class="img-circle" style="transform-origin: center;">
+            <div class="img-circleblock" style="transform-origin: center;">
+            </div>
+        </div>
+        <a href="#openModal" class="modal_window"></a>
+    </a>
+</div>
+<div id="openModal" class="modalDialog">
+    <div>
+        <a href="#close" title="Закрыть" class="close">X</a>
+        <form id="application" action="#" method="POST" name=" application ">
+
+            <div class="formflex_contact">
+                <h4>Ваши контактные данные:</h4>
+                <input name="name" id="applicationName" maxlength="25" placeholder="Имя" required />
+                <input name="telephone" type="Tel" id="applicationTelephone" maxlength="20" placeholder="Телефон" required />
+            </div>
+            <button class="applicationButton" type="submit" form="application">Отправить</button>
+        </form>
+        <p>Мы свяжемся с вами в ближайшее время!</p>
+    </div>
+</div>

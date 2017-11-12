@@ -1,0 +1,19 @@
+﻿@model Klinik.Utils.DataBase.Emails.Comment
+
+@using (Ajax.BeginForm("SendFeedback", "Klinik", null, new AjaxOptions
+{
+    UpdateTargetId = "send_feedback",
+    OnSuccess = "SendFeedbackOnComplete"
+}, new { @id = "feedback-form" }))
+
+{
+
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    @Html.TextBoxFor(x => x.Name, new { @placeholder = "Имя" })
+    @Html.TextBoxFor(x => x.Company, new { @placeholder = "Компания и должность" })
+    <p>
+        @Html.TextAreaFor(x => x.Message, new { @placeholder = "Отзыв" })
+    </p>
+        <button class="applicationButton" type="submit" form="feedback-form">Отправить</button>
+}

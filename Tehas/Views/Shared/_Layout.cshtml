@@ -1,0 +1,104 @@
+﻿<!DOCTYPE HTML PUBLIC>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Klinik im Zentrum</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Web Development" />
+    <meta name="keywords" content="website, web, development, webdevelopment, design, webdesign" />
+    <link rel="shortcut icon" href="~/Content/images/shortcut.png">
+    @Styles.Render("~/Content/css")
+</head>
+<body>
+    <div class="wrapper">
+        @Html.Partial("Partial/_header")
+        @RenderBody()
+        @Html.Partial("Partial/_footer")
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jcarousellite")
+    @RenderSection("scripts", required: false)
+    <script>
+        //var zTop = 1;
+        //$('a').on('click', function (e) {
+        //    e.preventDefault();
+        //    // Animate up or down based on DOM index
+        //    var index = $($(this).attr('href')).index();
+        //    var wh = $(window).height();
+        //    $('section').each(function () {
+        //        var $tgt = $(this);
+        //        var idx = $tgt.index();
+        //        $tgt.removeClass();
+        //        if (index == idx) { $tgt.stop(true, true).animate({ top: 0 }, 'linear').addClass('active').css({ 'z-index': zTop }); }
+        //        if (index < idx) { $tgt.stop(true, true).animate({ top: wh }, 'linear').addClass('below'); }
+        //        if (index > idx) { $tgt.stop(true, true).animate({ top: -wh }, 'linear').addClass('above'); }
+        //    });
+        //    zTop++;
+        //})
+
+        //// Trigger first section animation
+        //$('a[href="#a"]').trigger('click');
+        $(function () {
+            $(window).scroll(function () {
+                if ($(this).scrollTop() != 0) {
+                    $('#toTop').fadeIn();
+                } else {
+                    $('#toTop').fadeOut();
+                }
+
+                if ($(this).scrollTop() > 70) {
+                    $('#menu').addClass('fixed');
+                }
+                else if ($(this).scrollTop() < 70) {
+                    $('#menu').removeClass('fixed');
+                }
+            });
+
+            $('#toTop').click(function () {
+                $('body,html').animate({ scrollTop: 0 }, 900);
+            });
+
+            $('#slidebox').jCarouselLite({
+                vertical: false,
+                hoverPause: true,
+                btnPrev: ".previous",
+                btnNext: ".next",
+                visible: 1,
+                start: 0,
+                scroll: 1,
+                circular: true,
+                auto: 6000,
+                speed: 900,
+                btnGo:
+                [".1", ".2",
+                ".3", ".4"],
+
+                afterEnd: function (a, to, btnGo) {
+                    if (btnGo.length <= to) {
+                        to = 0;
+                    }
+                    $(".thumbActive").removeClass("thumbActive");
+                    $(btnGo[to]).addClass("thumbActive");
+                }
+            });
+        });
+
+        $(document).ready(function () {
+            $('.anchor').click(function () {
+                var scroll_el = $(this).attr('href');
+                if ($(scroll_el).length != 0) {
+                    $('html, body').animate({ scrollTop: $(scroll_el).offset().top - 80 }, 1000);
+                }
+                return false;
+            });
+
+            // Initialise the first and second carousel by class selector.
+            // Note that they use both the same configuration options (none in this case).
+            jQuery('.d-carousel .carousel').jcarousel({
+                scroll: 1
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+﻿@{
+    Layout = "~/Areas/Cabinet/Views/Shared/_Layout.cshtml";
+}
+@section Scripts {
+    <script>
+        
+        function deleteChekedProducts() {
+            var elements = $('#del .checkbox:checked');
+            var count = elements.length;
+            if (count > 0) {
+                var values = elements.map(function () {
+                    return parseInt($(this).val());
+                }).get();
+                deleteProducts(values);
+            }
+        }
+
+        function deleteProducts(ids) {
+            if (confirm("Вы действительно хотите удалить комментарии?")) {                
+                var obj = {
+                    "ProductsId": ids
+                }
+
+                var json = JSON.stringify(obj);
+
+                $.ajax({
+                    url: "/cabinet/comment/delete",
+                    type: "POST",
+                    contentType: 'application/json; charset=utf-8',
+                    data: json,
+                    success: function (response) {
+                        $("table.added").html(response);
+                    },
+                    error: function (response) {
+                        //    $(loadingId).hide();
+                        //    $("<span>Извините, при обработке запроса произошла ошибка. Пожалуйста обновите страницу</span>").appendTo($(container));
+                    }
+                });
+            }
+        }
+        function changeState(id, element) {
+
+            var state = $(element).prop("checked");
+                    var obj = {
+                        "Id": id,
+                        "IsModerated" : state
+                    }
+
+                    var json = JSON.stringify(obj);
+
+                    $.ajax({
+                        url: "/cabinet/comment/changestate",
+                        type: "POST",
+                        contentType: 'application/json; charset=utf-8',
+                        data: json,
+                        success: function (response) {
+                        
+                        },
+                        error: function (response) {
+                            //    $(loadingId).hide();
+                            //    $("<span>Извините, при обработке запроса произошла ошибка. Пожалуйста обновите страницу</span>").appendTo($(container));
+                        }
+                    });
+            }
+
+    </script>
+}
+
+<div class="container" id="container">
+    <div class="navigation_string">
+        <div class="way">
+            <a href="/">Главная</a>
+            <pre> </pre>
+            <p>></p>
+            <pre> </pre>
+            <a href="/Cabinet/Main">Админка</a>
+        </div>
+    </div>
+</div>
+<div class="information_topic">
+    <div class="container" id="container">
+        <div class="h2"><h2>Редактирование</h2></div>
+    </div>
+    <div class="container" id="container">
+        <div id="pagecontent">
+            <div class="list_1">
+                <h2 class="tabset_label">Table of Contents</h2>
+                <ul class="tabset_tabs">
+                    <li class="firstchild1"><a href="/Cabinet/Main" class="1">Главная</a></li>
+                    <li><a class="1" href="/Cabinet/Page/List">Типовые страницы</a></li>
+                    <li><a class="2" href="/Cabinet/Menu/List">Меню/Доставка</a></li>
+                    <li><a class="2" href="/Cabinet/Game/List">Игры/Тарифы</a></li>
+                    <li><a class="preActive active" href="/Cabinet/Comment/List">Комментарии</a></li>
+                </ul>
+            </div>
+
+            <div id="adminka3" class="tabset_content tabset_content_active">
+                <h2 class="tabset_label">adminka</h2>
+
+                <div class="added">
+                    <div class="buttons">                        
+                        <button class="delete_all" onclick="deleteChekedProducts();">Удалить выбранные</button>
+                    </div>
+                    <table class="added">
+                        @Html.Partial("Partial/_listOfCommentsPartial", ViewBag.Comments as List<Tehas.Utils.DataBase.Emails.Comment>)
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

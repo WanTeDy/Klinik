@@ -1,0 +1,20 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace Klinik.Utils.DataBase.Products
+{
+    public class Category : BaseObj
+    {
+        /// <summary>
+        /// Parent's category id if present
+        /// </summary>
+        public Int32? ParentId { get; set; }
+        /// <summary>
+        /// Category's name in Russian
+        /// </summary>     
+        public String RussianName { get; set; }        
+
+        public virtual Category Parent { get; set; }
+        public virtual List<Product> Products { get; set; }  
+    }
+}

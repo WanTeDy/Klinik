@@ -1,0 +1,437 @@
+﻿@section Scripts {
+    @Scripts.Render("~/bundles/ajax")
+    @Scripts.Render("~/Scripts/jqueryval")
+    <script>
+        function SendMessageOnComplete(data, resul, xhr) {
+            if (data.url) {
+                // if the server returned a JSON object containing an url
+                // property we redirect the browser to that url
+                window.location.href = data.url;
+            }
+        }
+        function SendFeedbackOnComplete(data, resul, xhr) {
+            if (data.url) {
+                // if the server returned a JSON object containing an url
+                // property we redirect the browser to that url
+                window.location.href = data.url;
+            }
+        }
+        var hidden = true;
+        function makeFeedback(e) {
+            e.preventDefault();
+            if (hidden) {
+                hidden = false;
+                $('._comment').show(1000)
+            } else {
+                hidden = true;
+                $('._comment').hide(1000)
+            }
+        }
+    </script>
+}
+<div class="video" controls="controls">
+    <video autoplay="autoplay" loop="loop" muted="muted">
+        <source src="video/2.mp4" type='video/mp4;'>
+    </video>
+    <div class="social">
+        <div class="fb"><a href="https://www.facebook.com/profile.php?id=100014429629385" target="_blank"></a></div>
+        <div class="insta"><a href="" target="_blank"></a></div>
+    </div>
+</div>
+
+<div class="h2" id="about_us"><h2>О <span class="blue">нас</span></h2></div>
+<div class="about_us">
+    <div class="about_wrapper">
+        <div class="photo">
+            <img src="~/Content/images/about.jpg">
+        </div>
+        <div class="text">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure tetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+        </div>
+    </div>
+</div>
+<div class="h2" id="advantages"><h2>Наши <span class="blue">преимущества</span></h2></div>
+<div class="advantages">
+    <div class="advantages_wrapper">
+        <div class="part1">
+            <h4>Качество</h4>
+            <p>empor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+        <div class="part2">
+            <h4>Гарантия</h4>
+            <p>empor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+        <div class="part3">
+            <h4>Цена</h4>
+            <p>empor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+        <div class="part4">
+            <h4>Сервис</h4>
+            <p>empor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+    </div>
+</div>
+<div class="h2" id="services" style="margin-top:0"><h2>Наши <span class="blue">Услуги</span></h2></div>
+<div class="portfolio">
+    <div class="our_works">
+        <ol>
+            <li>
+                <figure class="effect-sadie">
+                    <img src="~/Content/images/1.png" style="width:267px; height:274px;" />
+                    <figcaption>
+                        <h2>Диа<span>гностика</span></h2>
+                        <p><a href="/klinik/service">Подробнее</a></p>
+                    </figcaption>
+                </figure>
+            </li>
+            <li>
+                <figure class="effect-sadie">
+                    <img src="~/Content/images/1.png" style="width:267px; height:274px;" />
+                    <figcaption>
+                        <h2>Диа<span>гностика</span></h2>								<p><a href="">Подробнее</a></p>
+                    </figcaption>
+                </figure>
+            </li>
+            <li>
+                <figure class="effect-sadie">
+                    <img src="~/Content/images/1.png" style="width:267px; height:274px;" />
+                    <figcaption>
+                        <h2>Диа<span>гностика</span></h2>								<p><a href="">Подробнее</a></p>
+                    </figcaption>
+                </figure>
+            </li>
+            <li>
+                <figure class="effect-sadie">
+                    <img src="~/Content/images/1.png" style="width:267px; height:274px;" />
+                    <figcaption>
+                        <h2>Диа<span>гностика</span></h2>								<p><a href="">Подробнее</a></p>
+                    </figcaption>
+                </figure>
+            </li>
+            <li>
+                <figure class="effect-sadie">
+                    <img src="~/Content/images/1.png" style="width:267px; height:274px;" />
+                    <figcaption>
+                        <h2>Диа<span>гностика</span></h2>
+                        <p><a href="">Подробнее</a></p>
+                    </figcaption>
+                </figure>
+            </li>
+            <li>
+                <figure class="effect-sadie">
+                    <img src="~/Content/images/1.png" style="width:267px; height:274px;" />
+                    <figcaption>
+                        <h2>Диа<span>гностика</span></h2>
+                        <p><a href="">Подробнее</a></p>
+                    </figcaption>
+                </figure>
+            </li>
+            <li>
+                <figure class="effect-sadie">
+                    <img src="~/Content/images/1.png" style="width:267px; height:274px;" />
+                    <figcaption>
+                        <h2>Диа<span>гностика</span></h2>
+                        <p><a href="">Подробнее</a></p>
+                    </figcaption>
+                </figure>
+            </li>
+            <li>
+                <figure class="effect-sadie">
+                    <img src="~/Content/images/1.png" style="width:267px; height:274px;" />
+                    <figcaption>
+                        <h2>Диа<span>гностика</span></h2>
+                        <p><a href="">Подробнее</a></p>
+                    </figcaption>
+                </figure>
+            </li>
+
+        </ol>
+    </div>
+</div>
+<div class="h2" id="prices"><h2>Наши <span class="blue">Цены</span></h2></div>
+
+<div class="cost" id="cost">
+    <div class="cost_wrapper">
+        <section class="ac-container">
+            <div class="top">
+                <label>Название услуги</label>
+                <label>Стоимость, грн</label>
+            </div>
+            <div>
+                <input id="ac-1" name="accordion-1" type="checkbox" />
+                <label for="ac-1">Диагностика</label>
+                <article class="ac-small">
+                    <p style="text-align: left;">Диагностика</p><p>1000 грн</p>
+                </article>
+            </div>
+            <div>
+                <input id="ac-2" name="accordion-1" type="checkbox" />
+                <label for="ac-2">Диагностика</label>
+                <article class="ac-small">
+                    <p style="text-align: left;">Диагностика</p> <p>1000 грн</p>
+                </article>
+            </div>
+            <div>
+                <input id="ac-3" name="accordion-1" type="checkbox" />
+                <label for="ac-3">Диагностика</label>
+                <article class="ac-small">
+                    <p style="text-align: left;">Диагностика</p> <p>1000 грн</p>
+                </article>
+            </div>
+            <div>
+                <input id="ac-4" name="accordion-1" type="checkbox" />
+                <label for="ac-4">Диагностика</label>
+                <article class="ac-small">
+                    <p style="text-align: left;">Диагностика</p> <p>1000 грн</p>
+                </article>
+            </div>
+
+            <div>
+                <input id="ac-5" name="accordion-1" type="checkbox" />
+                <label for="ac-5">Диагностика</label>
+                <article class="ac-small">
+                    <p style="text-align: left;">Диагностика</p> <p>1000 грн</p>
+                </article>
+            </div>
+            <div>
+                <input id="ac-6" name="accordion-1" type="checkbox" />
+                <label for="ac-6">Диагностика</label>
+                <article class="ac-small">
+                    <p style="text-align: left;">Диагностика</p> <p>1000 грн</p>
+                </article>
+            </div>
+            <div>
+                <input id="ac-7" name="accordion-1" type="checkbox" />
+                <label for="ac-7">Диагностика</label>
+                <article class="ac-small">
+                    <p style="text-align: left;">Диагностика</p> <p>1000 грн</p>
+                </article>
+            </div>
+            <div>
+                <input id="ac-8" name="accordion-1" type="checkbox" />
+                <label for="ac-8">Диагностика</label>
+                <article class="ac-small">
+                    <p style="text-align: left;">Диагностика</p> <p>1000 грн</p>
+                </article>
+            </div>
+
+        </section>
+
+        <section class="ac-container">
+            <div class="top1">
+                <label>Название услуги</label>
+                <label>Стоимость, грн</label>
+            </div>
+            <div>
+                <input id="ac-9" name="accordion-1" type="checkbox" />
+                <label for="ac-9">Диагностика</label>
+                <article class="ac-small">
+                    <p style="text-align: left;">Диагностика</p><p>1000 грн</p>
+                </article>
+            </div>
+            <div>
+                <input id="ac-10" name="accordion-1" type="checkbox" />
+                <label for="ac-10">Диагностика</label>
+                <article class="ac-small">
+                    <p style="text-align: left;">Диагностика</p> <p>1000 грн</p>
+                </article>
+            </div>
+            <div>
+                <input id="ac-11" name="accordion-1" type="checkbox" />
+                <label for="ac-11">Диагностика</label>
+                <article class="ac-small">
+                    <p style="text-align: left;">Диагностика</p> <p>1000 грн</p>
+                </article>
+            </div>
+            <div>
+                <input id="ac-12" name="accordion-1" type="checkbox" />
+                <label for="ac-12">Диагностика</label>
+                <article class="ac-small">
+                    <p style="text-align: left;">Диагностика</p> <p>1000 грн</p>
+                </article>
+            </div>
+
+            <div>
+                <input id="ac-13" name="accordion-1" type="checkbox" />
+                <label for="ac-13">Диагностика</label>
+                <article class="ac-small">
+                    <p style="text-align: left;">Диагностика</p> <p>1000 грн</p>
+                </article>
+            </div>
+            <div>
+                <input id="ac-14" name="accordion-1" type="checkbox" />
+                <label for="ac-14">Диагностика</label>
+                <article class="ac-small">
+                    <p style="text-align: left;">Диагностика</p> <p>1000 грн</p>
+                </article>
+            </div>
+            <div>
+                <input id="ac-15" name="accordion-1" type="checkbox" />
+                <label for="ac-15">Диагностика</label>
+                <article class="ac-small">
+                    <p style="text-align: left;">Диагностика</p> <p>1000 грн</p>
+                </article>
+            </div>
+            <div>
+                <input id="ac-16" name="accordion-1" type="checkbox" />
+                <label for="ac-16">Диагностика</label>
+                <article class="ac-small">
+                    <p style="text-align: left;">Диагностика</p> <p>1000 грн</p>
+                </article>
+            </div>
+
+        </section>
+    </div>
+</div>
+
+<div class="h2" id="doctors"><h2>Наши <span class="blue">доктора</span></h2></div>
+<div class="our_team">
+    <div class="d-carousel">
+        <ul class="carousel">
+            <li>
+                <a href="/klinik/doctor/1"><img src="~/Content/images/doctor.png" alt="" /></a>
+                <div class="info">
+                    <h4><a href="/klinik/doctor/1">Иванов И.И.</a></h4>
+                    <h5>Директор</h5>
+                    <p>Suspendisse potenti.potenti potenti potenti Nibh miry</p>
+                </div>
+            </li>
+            <li>
+                <a href="#"><img src="~/Content/images/doctor2.png" alt="" /></a>
+                <div class="info">
+                    <h4><a href="#">Иванов И.И.</a></h4>
+                    <h5>Директор</h5>
+                    <p>Suspendisse potenti.potenti potenti potenti Nibh miry</p>
+                </div>
+            </li>
+            <li>
+                <a href="#"><img src="~/Content/images/doctor3.png" alt="" /></a>
+                <div class="info">
+                    <h4><a href="#">Иванов И.И.</a></h4>
+                    <h5>Директор</h5>
+                    <p>Suspendisse potenti.potenti potenti potenti Nibh miry</p>
+                </div>
+            </li>
+            <li>
+                <a href="#"><img src="~/Content/images/doctor.png" alt="" /></a>
+                <div class="info">
+                    <h4><a href="#">Иванов И.И.</a></h4>
+                    <h5>Директор</h5>
+                    <p>Suspendisse potenti potenti.potentipotenti potenti Nibh miry</p>
+                </div>
+            </li>
+
+        </ul>
+    </div>
+</div>
+<div class="h2" id="feedbacks"><h2>Отз<span class="blue">ывы</span></h2></div>
+<div class="comment">
+    <div class="slidebox" id="slidebox">
+        <ul>
+            <li>
+                <div class="wrapper-li">
+                    <div class="info">
+                        <div class="img">
+                            <img src="~/Content/images/man.png" width="139px" height="130px">
+                        </div>
+                        <div class="information">
+                            <h3>Иван Иванов</h3>
+                            <h4>Стоматолог</h4>
+                        </div>
+                    </div>
+                    <div class="text-comm">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum d</p>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="wrapper-li">
+                    <div class="info">
+                        <div class="img">
+                            <img src="~/Content/images/man.png" width="139px" height="130px">
+                        </div>
+                        <div class="information">
+                            <h3>Иван Иванов</h3>
+                            <h4>Стоматолог</h4>
+                        </div>
+                    </div>
+                    <div class="text-comm">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum d</p>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="wrapper-li">
+                    <div class="info">
+                        <div class="img">
+                            <img src="~/Content/images/man.png" width="139px" height="130px">
+                        </div>
+                        <div class="information">
+                            <h3>Иван Иванов</h3>
+                            <h4>Стоматолог</h4>
+                        </div>
+                    </div>
+                    <div class="text-comm">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum d</p>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="wrapper-li">
+                    <div class="info">
+                        <div class="img">
+                            <img src="~/Content/images/man.png" width="139px" height="130px">
+                        </div>
+                        <div class="information">
+                            <h3>Иван Иванов</h3>
+                            <h4>Стоматолог</h4>
+                        </div>
+                    </div>
+                    <div class="text-comm">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum d</p>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div class="next"></div>
+        <div class="previous"></div>
+        <div class="thumbs">
+            <a href="#" onclick="" class="1 thumbActive" id="a"></a>
+            <a href="#" onclick="" class="2" id="b"></a>
+            <a href="#" onclick="" class="3" id="c"></a>
+            <a href="#" onclick="" class="4" id="d"></a>
+        </div>
+    </div>
+    <a href="#" onclick="makeFeedback(event);" class="todo_comm">Оставить отзыв</a>
+</div>
+<div class="_comment">
+    <div id="send_feedback">
+        @Html.Partial("_feedback")
+    </div>
+    <p style="display:none;">Спасибо за ваш отзыв!</p>
+</div>
+
+<div class="h2" id="contacts"><h2>Кон<span class="blue">такты</span></h2></div>
+
+<div class="contacts">
+    <div class="information">
+        <div class="info">
+            <div class="tel"><img src="~/Content/images/tel.png"><p>+380 (48) 709–27–09</p></div>
+            <div class="gmail"><img src="~/Content/images/mail.png" style="height: 20px"><p>klinikimzentrum@ukr.net</p></div>
+            <div class="point"><img src="~/Content/images/point.png"><p>г. Одесса, ул. Малая Арнаутская, 64.</p></div>
+
+        </div>
+
+    </div>
+    <div class="feedback" id="email_us">
+        <h3>Связаться с нами</h3>
+        <div id="send_message">
+            @Html.Partial("_message")
+        </div>
+        <p style="display:none;">Мы свяжемся с вами в ближайшее время.</p>
+    </div>
+
+    <div class="map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1114.3722633604568!2d30.735482196245954!3d46.4710532825434!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40c63183b6d746bd%3A0xfc50db3213b12d2f!2sKlinik+im+Zentrum!5e0!3m2!1sru!2sru!4v1508853573421" width="100%" frameborder="0" style="border:0" allowfullscreen></iframe>
+    </div>
+</div>
