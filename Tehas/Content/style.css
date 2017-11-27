@@ -15,11 +15,6 @@ a {
 	display: flex;
 	margin-bottom: 0;
 }
-
-
-
-
-
 .clr {
 	clear: both;
 	padding: 0;
@@ -1380,7 +1375,7 @@ opacity: .1;}}
     font-family: Calibri;
     line-height: 18px;
     text-align: center;
-    font-size: 400;
+    font-weight: 400;
 }
 .doctor .text {
 	max-width: 1054px;

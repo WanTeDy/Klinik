@@ -5,7 +5,7 @@ namespace Klinik.Utils.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Klinik.Utils.DataBase.DbTehas>
+    internal sealed class Configuration : DbMigrationsConfiguration<Klinik.Utils.DataBase.DbKlinik>
     {
         public Configuration()
         {
@@ -13,7 +13,7 @@ namespace Klinik.Utils.Migrations
             ContextKey = "Tehas.Utils.DataBase.DbTehas";
         }
 
-        protected override void Seed(Klinik.Utils.DataBase.DbTehas context)
+        protected override void Seed(Klinik.Utils.DataBase.DbKlinik context)
         {
             //  This method will be called after migrating to the latest version.
 

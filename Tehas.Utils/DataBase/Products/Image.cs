@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Klinik.Utils.DataBase.PagesDesc;
-using Klinik.Utils.DataBase.Security;
 
 namespace Klinik.Utils.DataBase.Products
 {
@@ -15,11 +13,5 @@ namespace Klinik.Utils.DataBase.Products
         /// Url of image
         /// </summary>
         public String Url { get; set; }
-        /// <summary>
-        /// Description of image
-        /// </summary>
-        public String Description { get; set; }
-
-        public virtual List<PageDescription> PageDescriptions { get; set; }
     }
 }

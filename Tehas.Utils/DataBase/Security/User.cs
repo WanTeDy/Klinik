@@ -15,30 +15,6 @@ namespace Klinik.Utils.DataBase.Security
         /// </summary>
         public String Login { get; set; }
         /// <summary>
-        /// Login
-        /// </summary>
-        public String Name { get; set; }
-        /// <summary>
-        /// Login
-        /// </summary>
-        public String Surname { get; set; }
-        /// <summary>
-        /// Login
-        /// </summary>
-        public String Fathername { get; set; }
-        /// <summary>
-        /// Login
-        /// </summary>
-        public String Position { get; set; }
-        /// <summary>
-        /// Login
-        /// </summary>
-        public String Slogan { get; set; }
-        /// <summary>
-        /// Login
-        /// </summary>
-        public String About { get; set; }
-        /// <summary>
         /// Password
         /// </summary>
         public String Password { get; set; }              

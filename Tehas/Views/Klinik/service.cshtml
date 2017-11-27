@@ -1,30 +1,47 @@
-﻿<div class="h22"><h3>Услуги и <span class="blue">цены</span></h3></div>
+﻿@using Klinik.Utils.DataBase.Products
+@model List<Product>
+@{
+    Product selected = ViewBag.Selected;
+}
+@section Scripts {
+    <script>
+        function setProd(imgUrl, title, desc) {
+            $('.picture img').attr('src', imgUrl);
+            $('.picture .h3 h3').text(title);
+            $('.text1 p').text(desc);
+
+            var html = title.substring(0, title.length / 2) + '<span class="blue">' + title.substring(title.length / 2, title.length / 2) + '</span>';
+            $('.h22 h3').html(html);
+        };
+    </script>
+}
+<div class="h22"><h3>Услуги и <span class="blue">цены</span></h3></div>
 
 <div class="doctor">
 
     <div class="wrapper_service">
         <div class="service">
-            <div class="picture">
-                <img src="~/Content/images/service.png" alt="" />
-                <div class="h3"><h3>Диагностика</h3></div>
-            </div>
+            @if (selected != null)
+            {
+                <div class="picture">
+                    <img src="@Url.Content(selected.Image.Url + selected.Image.FileName)" alt="" />
+                    <div class="h3"><h3>selected.Title</h3></div>
+                </div>
+            }
+
             <div class="info">
                 <div class="links">
-                    <a href="">Диагностика Диагностика</a>
-                    <a href="">Диагностика</a>
-                    <a href="">Диагностика</a>
-                    <a href="">Диагностика</a>
-                    <a href="">Диагностика</a>
-                    <a href="">Диагностика</a>
-                    <a href="">Диагностика</a>
-                    <a href="">Диагностика Диагностика</a>
+                    @foreach (var pr in Model)
+                    {
+                        <a href="" onclick="setProd('@Url.Content(pr.Image.Url + pr.Image.FileName)','@pr.Title', '@Html.Raw(pr.Description)')">@pr.Title</a>
+                    }
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="h22"><h3>Диагнос<span class="blue">тика</span></h3></div>
+    <div class="h22"><h3>@selected.Title.Substring(0, selected.Title.Length/2)<span class="blue">@selected.Title.Substring(selected.Title.Length / 2, selected.Title.Length / 2)</span></h3></div>
     <div class="text1">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+        <p>@Html.Raw(selected.Description)</p>
     </div>
 </div>

@@ -9,7 +9,7 @@ namespace Klinik.Utils.BusinessOperations
         /// <summary>
         /// Context
         /// </summary>
-        public DbTehas Context { get; set; }
+        public DbKlinik Context { get; set; }
 
         public BaseOperation()
         {
@@ -41,7 +41,7 @@ namespace Klinik.Utils.BusinessOperations
         {
             get
             {
-                return Errors.Count > 0 ? false : true;
+                return !(Errors.Count > 0);
             }
         }
 
@@ -60,7 +60,7 @@ namespace Klinik.Utils.BusinessOperations
         public void ExcecuteTransaction()
         {
 
-            Context = new DbTehas();
+            Context = new DbKlinik();
 
             OnBeginTransaction();
             //отрытие тр.

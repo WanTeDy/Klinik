@@ -159,10 +159,9 @@
     <Compile Include="Areas\Cabinet\CabinetAreaRegistration.cs" />
     <Compile Include="Areas\Cabinet\Controllers\AuthorizeController.cs" />
     <Compile Include="Areas\Cabinet\Controllers\ImageController.cs" />
-    <Compile Include="Areas\Cabinet\Controllers\MainController.cs" />
     <Compile Include="Areas\Cabinet\Controllers\CommentController.cs" />
-    <Compile Include="Areas\Cabinet\Controllers\MenuController.cs" />
-    <Compile Include="Areas\Cabinet\Controllers\PageController.cs" />
+    <Compile Include="Areas\Cabinet\Controllers\DoctorController.cs" />
+    <Compile Include="Areas\Cabinet\Controllers\ServiceController.cs" />
     <Compile Include="Areas\Cabinet\Models\ImageDeleteModel.cs" />
     <Compile Include="Areas\Cabinet\Models\ProductDeleteModel.cs" />
     <Compile Include="Areas\Cabinet\Models\ProductModel.cs" />
@@ -252,6 +251,7 @@
     <Content Include="Content\jquery.fancybox.css" />
     <Content Include="Content\reset.css" />
     <Content Include="Content\style.css" />
+    <Content Include="Content\video\about.mp4" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="robots.txt" />

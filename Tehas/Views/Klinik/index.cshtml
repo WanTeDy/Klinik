@@ -1,4 +1,6 @@
-﻿@section Scripts {
+﻿@using Klinik.Utils.DataBase.Security
+@using Klinik.Utils.DataBase.Products
+@section Scripts {
     @Scripts.Render("~/bundles/ajax")
     @Scripts.Render("~/Scripts/jqueryval")
     <script>
@@ -24,7 +26,7 @@
 }
 <div class="video" controls="controls">
     <video autoplay="autoplay" loop="loop" muted="muted">
-        <source src="video/2.mp4" type='video/mp4;'>
+        <source src="~/Content/video/about.mp4" type='video/mp4;'>
     </video>
     <div class="social">
         <div class="fb"><a href="https://www.facebook.com/profile.php?id=100014429629385" target="_blank"></a></div>
@@ -71,85 +73,18 @@
 <div class="portfolio">
     <div class="our_works">
         <ol>
-            <li>
-                <figure class="effect-sadie">
-                    <img src="~/Content/images/1.png" style="width:267px; height:274px;" />
-                    <figcaption>
-                        <h2>Диа<span>гностика</span></h2>
-                        <p><a href="/klinik/service">Подробнее</a></p>
-                    </figcaption>
-                </figure>
-            </li>
-            <li>
-                <figure class="effect-sadie">
-                    <img src="~/Content/images/1.png" style="width:267px; height:274px;" />
-                    <figcaption>
-                        <h2>Диа<span>гностика</span></h2>								<p><a href="">Подробнее</a></p>
-                    </figcaption>
-                </figure>
-            </li>
-            <li>
-                <figure class="effect-sadie">
-                    <img src="~/Content/images/1.png" style="width:267px; height:274px;" />
-                    <figcaption>
-                        <h2>Диа<span>гностика</span></h2>								<p><a href="">Подробнее</a></p>
-                    </figcaption>
-                </figure>
-            </li>
-            <li>
-                <figure class="effect-sadie">
-                    <img src="~/Content/images/1.png" style="width:267px; height:274px;" />
-                    <figcaption>
-                        <h2>Диа<span>гностика</span></h2>								<p><a href="">Подробнее</a></p>
-                    </figcaption>
-                </figure>
-            </li>
-            <li>
-                <figure class="effect-sadie">
-                    <img src="~/Content/images/1.png" style="width:267px; height:274px;" />
-                    <figcaption>
-                        <h2>Диа<span>гностика</span></h2>
-                        <p><a href="">Подробнее</a></p>
-                    </figcaption>
-                </figure>
-            </li>
-            <li>
-                <figure class="effect-sadie">
-                    <img src="~/Content/images/1.png" style="width:267px; height:274px;" />
-                    <figcaption>
-                        <h2>Диа<span>гностика</span></h2>
-                        <p><a href="">Подробнее</a></p>
-                    </figcaption>
-                </figure>
-            </li>
-            <li>
-                <figure class="effect-sadie">
-                    <img src="~/Content/images/1.png" style="width:267px; height:274px;" />
-                    <figcaption>
-                        <h2>Диа<span>гностика</span></h2>
-                        <p><a href="">Подробнее</a></p>
-                    </figcaption>
-                </figure>
-            </li>
-            <li>
-                <figure class="effect-sadie">
-                    <img src="~/Content/images/1.png" style="width:267px; height:274px;" />
-                    <figcaption>
-                        <h2>Диа<span>гностика</span></h2>
-                        <p><a href="">Подробнее</a></p>
-                    </figcaption>
-                </figure>
-            </li>
-            <li>
-                <figure class="effect-sadie">
-                    <img src="~/Content/images/1.png" style="width:267px; height:274px;" />
-                    <figcaption>
-                        <h2>Диа<span>гностика</span></h2>
-                        <p><a href="">Подробнее</a></p>
-                    </figcaption>
-                </figure>
-            </li>
-
+            @foreach (Product prod in ViewBag.Products)
+            {
+                <li>
+                    <figure class="effect-sadie">
+                        <img src="@Url.Content(prod.Image.Url + prod.Image.FileName)" style="width:267px; height:274px;" />
+                        <figcaption>
+                            <h2>@prod.Title.Substring(0, prod.Title.Length / 2)<span>@prod.Title.Substring(prod.Title.Length / 2, prod.Title.Length / 2)</span></h2>
+                            <p><a href="/klinik/service/@prod.Id">Подробнее</a></p>
+                        </figcaption>
+                    </figure>
+                </li>
+            }
         </ol>
     </div>
 </div>
@@ -255,39 +190,17 @@
 <div class="our_team">
     <div class="d-carousel">
         <ul class="carousel">
-            <li>
-                <a href="/klinik/doctor/1"><img src="~/Content/images/doctor.png" alt="" /></a>
-                <div class="info">
-                    <h4><a href="/klinik/doctor/1">Иванов И.И.</a></h4>
-                    <h5>Директор</h5>
-                    <p>Suspendisse potenti.potenti potenti potenti Nibh miry</p>
-                </div>
-            </li>
-            <li>
-                <a href="#"><img src="~/Content/images/doctor2.png" alt="" /></a>
-                <div class="info">
-                    <h4><a href="#">Иванов И.И.</a></h4>
-                    <h5>Директор</h5>
-                    <p>Suspendisse potenti.potenti potenti potenti Nibh miry</p>
-                </div>
-            </li>
-            <li>
-                <a href="#"><img src="~/Content/images/doctor3.png" alt="" /></a>
-                <div class="info">
-                    <h4><a href="#">Иванов И.И.</a></h4>
-                    <h5>Директор</h5>
-                    <p>Suspendisse potenti.potenti potenti potenti Nibh miry</p>
-                </div>
-            </li>
-            <li>
-                <a href="#"><img src="~/Content/images/doctor.png" alt="" /></a>
-                <div class="info">
-                    <h4><a href="#">Иванов И.И.</a></h4>
-                    <h5>Директор</h5>
-                    <p>Suspendisse potenti potenti.potentipotenti potenti Nibh miry</p>
-                </div>
-            </li>
-
+            @foreach (Doctor doc in ViewBag.Doctors)
+            {
+                <li>
+                    <a href="/klinik/doctor/@doc.Id"><img src="@Url.Content(doc.Image.Url + doc.Image.FileName)" alt="" /></a>
+                    <div class="info">
+                        <h4><a href="/klinik/doctor/@doc.Id">@doc.ShortName</a></h4>
+                        <h5>@doc.Position</h5>
+                        <p>@doc.Slogan</p>
+                    </div>
+                </li>
+            }
         </ul>
     </div>
 </div>

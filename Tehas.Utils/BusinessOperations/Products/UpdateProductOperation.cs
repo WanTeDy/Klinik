@@ -4,93 +4,64 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Web;
-using Klinik.Utils.DataBase.PagesDesc;
 using Klinik.Utils.DataBase.Products;
 
 namespace Klinik.Utils.BusinessOperations.Products
 {
     public class UpdateProductOperation : BaseOperation
     {
-        private int _id { get; set; }
-        private int _categoryId { get; set; }
-        private String _description { get; set; }
-        private String _title { get; set; }
-        private double _price { get; set; }
-        private bool _isHot { get; set; }
         private HttpPostedFileBase _image { get; set; }
+        private Product _productEdit { get; set; }
         public Product _product { get; set; }
 
-        public UpdateProductOperation(int id, int categoryId, string description, string title, double price, bool isHot, HttpPostedFileBase image)
+        public UpdateProductOperation(Product product, HttpPostedFileBase image)
         {
-            _id = id;
-            _description = description;
-            _title = title;
-            _price = price;
-            _isHot = isHot;
+            _productEdit = product;
             _image = image;
-            _categoryId = categoryId;
             RussianName = "Редактирование информации продукта";
         }
 
         protected override void InTransaction()
         {
-            _product = Context.Products.FirstOrDefault(x => x.Id == _id && !x.Deleted);
+            _product = Context.Products.FirstOrDefault(x => x.Id == _productEdit.Id && !x.Deleted);
             if (_product == null)
                 Errors.Add("Id", "Данный продукт не найден");
             else
             {
-                var category = Context.Categories.FirstOrDefault(x => x.Id == _categoryId && !x.Deleted);
-                if (category == null)
+                if (_image != null)
                 {
-                    Errors.Add("CategoryId", "Данная категория не найдена");
-                }
-                else
-                {
-                    if (_price < 0)
+                    var url = "~/Content/images/products/";
+
+                    var path = HttpContext.Current.Server.MapPath(url);
+                    _image.InputStream.Seek(0, System.IO.SeekOrigin.Begin);
+                    int point = _image.FileName.LastIndexOf('.');
+                    var filename = _image.FileName.Substring(0, point) + "_" + DateTime.Now.ToFileTime();
+
+                    ImageBuilder.Current.Build(
+                        new ImageJob(_image.InputStream,
+                        path + filename,
+                        new Instructions("maxwidth=1200&maxheight=1200&format=jpg&quality=80"),
+                        false,
+                        true));
+
+                    var image = new Image
                     {
-                        Errors.Add("Price", "Цена не может быть меньше 0");
-                    }
-                    else
+                        FileName = filename + ".jpg",
+                        Url = url,
+                    };
+                    var deleteImg = _product.Image;
+                    FileInfo fileInf = new FileInfo(path + deleteImg.FileName);
+                    if (fileInf.Exists)
                     {
-                        if (_image != null)
-                        {
-                            var url = "~/Content/images/products/";
-
-                            var path = HttpContext.Current.Server.MapPath(url);
-                            _image.InputStream.Seek(0, System.IO.SeekOrigin.Begin);
-                            int point = _image.FileName.LastIndexOf('.');
-                            var filename = _image.FileName.Substring(0, point) + "_" + DateTime.Now.ToFileTime();
-
-                            ImageBuilder.Current.Build(
-                                new ImageJob(_image.InputStream,
-                                path + filename,
-                                new Instructions("maxwidth=1200&maxheight=1200&format=jpg&quality=80"),
-                                false,
-                                true));
-
-                            var image = new Image
-                            {
-                                FileName = filename + ".jpg",
-                                Url = url,
-                            };
-                            var deleteImg = _product.Image;
-                            FileInfo fileInf = new FileInfo(path + deleteImg.FileName);
-                            if (fileInf.Exists)
-                            {
-                                fileInf.Delete();
-                            }
-                            Context.Images.Add(image);
-                            _product.Image = image;
-                            Context.Images.Remove(deleteImg);
-                        }
-                        _product.CategoryId = _categoryId;
-                        _product.Title = _title;
-                        _product.Description = _description;
-                        _product.Price = _price;
-                        _product.IsHot = _isHot;
-                        Context.SaveChanges();
+                        fileInf.Delete();
                     }
+                    Context.Images.Add(image);
+                    _product.Image = image;
+                    Context.Images.Remove(deleteImg);
                 }
+                _product.Title = _productEdit.Title;
+                _product.Description = _productEdit.Description;
+                Context.SaveChanges();
             }
         }
     }

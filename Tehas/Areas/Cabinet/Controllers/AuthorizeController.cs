@@ -28,7 +28,7 @@ namespace Klinik.Frontend.Areas.Cabinet.Controllers
         public ActionResult Login()
         {   
             if (SessionHelpers.IsAuthentificated())            
-                return RedirectToAction("Index", "Main");
+                return RedirectToAction("List", "Service");
                         
             return View(new LoginModel());
         }
@@ -68,86 +68,86 @@ namespace Klinik.Frontend.Areas.Cabinet.Controllers
             return Json(new { url = Url.Action("Index", "Main") });
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        [AllowAnonymous]
-        public ActionResult Register([Bind(Include = "Name,Email,Password,ConfirmPassword")]RegisterModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                var pass = HashHelper.GetMd5Hash(model.Password);
-                var operation = new AddUserOperation(model.Name, model.Email, pass);
-                operation.ExcecuteTransaction();
-                if (operation.Success)
-                {
-                    var user = operation._user;
-                    return SetSessionData(user);
-                }
-                ErrorHelpers.AddModelErrors(ModelState, operation.Errors);
-            }
-            return PartialView("UnregisteredUsers/_registerPartial", model);
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //[AllowAnonymous]
+        //public ActionResult Register([Bind(Include = "Name,Email,Password,ConfirmPassword")]RegisterModel model)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        var pass = HashHelper.GetMd5Hash(model.Password);
+        //        var operation = new AddUserOperation(model.Name, model.Email, pass);
+        //        operation.ExcecuteTransaction();
+        //        if (operation.Success)
+        //        {
+        //            var user = operation._user;
+        //            return SetSessionData(user);
+        //        }
+        //        ErrorHelpers.AddModelErrors(ModelState, operation.Errors);
+        //    }
+        //    return PartialView("UnregisteredUsers/_registerPartial", model);
 
-        }
+        //}
 
-        [HttpGet]
-        [AllowAnonymous]
-        public ActionResult RemindPassword()
-        {
-            return View();
-        }
+        //[HttpGet]
+        //[AllowAnonymous]
+        //public ActionResult RemindPassword()
+        //{
+        //    return View();
+        //}
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        [AllowAnonymous]
-        public ActionResult RestorePasswordPartial(RestorePasswordModel m)
-        {
-            //check in db email and write token in db
-            //generate url to request RecoveryPassword
-            var operation = new RecoveryPasswordOperation(m.Email);
-            operation.ExcecuteTransaction();
-            if (operation.Success)
-            {
-                var user = operation._user;
-                try
-                {
-                    SendMailAsync(user);
-                    ViewBag.Success = true;
-                }
-                catch
-                {
-                    ModelState.AddModelError("Email", "Ошибка при отправлении письма");
-                }
-            }
-            else
-                ErrorHelpers.AddModelErrors(ModelState, operation.Errors);
-            return PartialView(m);
-        }
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //[AllowAnonymous]
+        //public ActionResult RestorePasswordPartial(RestorePasswordModel m)
+        //{
+        //    //check in db email and write token in db
+        //    //generate url to request RecoveryPassword
+        //    var operation = new RecoveryPasswordOperation(m.Email);
+        //    operation.ExcecuteTransaction();
+        //    if (operation.Success)
+        //    {
+        //        var user = operation._user;
+        //        try
+        //        {
+        //            SendMailAsync(user);
+        //            ViewBag.Success = true;
+        //        }
+        //        catch
+        //        {
+        //            ModelState.AddModelError("Email", "Ошибка при отправлении письма");
+        //        }
+        //    }
+        //    else
+        //        ErrorHelpers.AddModelErrors(ModelState, operation.Errors);
+        //    return PartialView(m);
+        //}
 
-        [HttpGet]
-        [AllowAnonymous]
-        public ActionResult RecoveryPassword(string token)
-        {
-            //check token and add it's to session or hidden field
-            var operation = new CheckTokenForAccessOperation(token);
-            operation.ExcecuteTransaction();
-            if (operation._access)
-            {
-                ViewBag.Token = operation._tokenHash;
-                ViewBag.Success = operation._access;
-            }
-            else
-            {
-                ViewBag.Success = false;
-                //TODO: Проверить че это за хрень
-                ViewBag.Error = "Восстановление пароля неудачно";
-            }
-            //Подтверждение пароля
-            return View();
-        }
+        //[HttpGet]
+        //[AllowAnonymous]
+        //public ActionResult RecoveryPassword(string token)
+        //{
+        //    //check token and add it's to session or hidden field
+        //    var operation = new CheckTokenForAccessOperation(token);
+        //    operation.ExcecuteTransaction();
+        //    if (operation._access)
+        //    {
+        //        ViewBag.Token = operation._tokenHash;
+        //        ViewBag.Success = operation._access;
+        //    }
+        //    else
+        //    {
+        //        ViewBag.Success = false;
+        //        //TODO: Проверить че это за хрень
+        //        ViewBag.Error = "Восстановление пароля неудачно";
+        //    }
+        //    //Подтверждение пароля
+        //    return View();
+        //}
 
         //TODO: настроить емейл
-        private void SendMailAsync(User user)
-        {
+        //private void SendMailAsync(User user)
+        //{
             // Create the email object first, then add the properties.
             //var myMessage = new SendGridMessage { From = new MailAddress("admin@ReHouse.com.ua") };
             //// Add the message properties.
@@ -196,33 +196,34 @@ namespace Klinik.Frontend.Areas.Cabinet.Controllers
 
             //// Send the email.
             //var r = transportWeb.DeliverAsync(myMessage);
-        }
+        //}
 
-        [HttpPost]
-        [AllowAnonymous]
-        public ActionResult RecoveryPasswordPartial(RecoveryPasswordModel m)
-        {
-            if (m.Password == m.ConfirmPassword)
-            {
-                var pass = HashHelper.GetMd5Hash(m.Password);
-                var operation = new SetPasswordOperation(pass, m.TokenHash);
-                operation.ExcecuteTransaction();
-                if (operation.Success)
-                {
-                    var user = operation._user;
-                    ViewBag.Success = true;
-                    return SetSessionData(user);
-                }
-                else
-                    ErrorHelpers.AddModelErrors(ModelState, operation.Errors);
-            }
-            else
-            {
-                ModelState.AddModelError("Password", "Пароли не совпадают!");
-                ViewBag.Success = false;
-            }
-            return PartialView(m);
-        }
+        //[HttpPost]
+        //[AllowAnonymous]
+        //public ActionResult RecoveryPasswordPartial(RecoveryPasswordModel m)
+        //{
+        //    if (m.Password == m.ConfirmPassword)
+        //    {
+        //        var pass = HashHelper.GetMd5Hash(m.Password);
+        //        var operation = new SetPasswordOperation(pass, m.TokenHash);
+        //        operation.ExcecuteTransaction();
+        //        if (operation.Success)
+        //        {
+        //            var user = operation._user;
+        //            ViewBag.Success = true;
+        //            return SetSessionData(user);
+        //        }
+        //        else
+        //            ErrorHelpers.AddModelErrors(ModelState, operation.Errors);
+        //    }
+        //    else
+        //    {
+        //        ModelState.AddModelError("Password", "Пароли не совпадают!");
+        //        ViewBag.Success = false;
+        //    }
+        //    return PartialView(m);
+        //}
+
         [HttpGet]
         [AllowAnonymous]
         public ActionResult LogOut()

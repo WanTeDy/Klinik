@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
+using System.Collections.Generic;
 using System.Web;
 using System.Web.Mvc;
 using Klinik.Frontend.Helpers;
@@ -8,6 +8,8 @@ using Klinik.Frontend.Models;
 using Klinik.Utils.DataBase.Emails;
 using Klinik.Utils.BusinessOperations.Comments;
 using Klinik.Utils.BusinessOperations.Orders;
+using Klinik.Utils.BusinessOperations.Doctors;
+using Klinik.Utils.BusinessOperations.Products;
 
 namespace Klinik.Frontend.Controllers
 {
@@ -15,24 +17,29 @@ namespace Klinik.Frontend.Controllers
     {
         public ActionResult Index()
         {
-            //var op = new LoadPagesDescOperation("klinik", "index");
-            //op.ExcecuteTransaction();
+            var op = new LoadAllDoctorsOperation();
+            op.ExcecuteTransaction();
+            ViewBag.Doctors = op._doctors;
+            var op2 = new LoadAllProductsOperation();
+            op2.ExcecuteTransaction();
+            ViewBag.Products = op2._products;
             ViewBag.NavMenuEnabled = true;
             return View(/*op._pageDescription*/);
         }
         public ActionResult Doctor(int id)
         {
-            //var op = new LoadPagesDescOperation("klinik", "index");
-            //op.ExcecuteTransaction();
+            var op = new LoadDoctorOperation(id);
+            op.ExcecuteTransaction();
             ViewBag.NavMenuEnabled = false;
-            return View(/*op._pageDescription*/);
+            return View(op._doctor);
         }
-        public ActionResult Service()
+        public ActionResult Service(int? id)
         {
-            //var op = new LoadPagesDescOperation("klinik", "index");
-            //op.ExcecuteTransaction();
+            var op = new LoadAllProductsOperation();
+            op.ExcecuteTransaction();
             ViewBag.NavMenuEnabled = false;
-            return View(/*op._pageDescription*/);
+            ViewBag.Selected = op._products.FirstOrDefault(x => x.Id == id.GetValueOrDefault()) ?? op._products.FirstOrDefault();
+            return View(op._products);
         }
 
         [ValidateAntiForgeryToken]
