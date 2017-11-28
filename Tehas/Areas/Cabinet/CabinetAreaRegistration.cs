@@ -17,7 +17,7 @@ namespace Klinik.Frontend.Areas.Cabinet
             context.MapRoute(
                 "Cabinet_default",
                 "Cabinet/{controller}/{action}/{id}",
-                new { controller = "main", action = "index", id = UrlParameter.Optional },
+                new { controller = "Authorize", action = "login", id = UrlParameter.Optional },
                 new[] { "Klinik.Frontend.Areas.Cabinet.Controllers" }
 
             );

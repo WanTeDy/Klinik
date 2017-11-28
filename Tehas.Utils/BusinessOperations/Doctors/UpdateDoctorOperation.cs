@@ -34,6 +34,9 @@ namespace Klinik.Utils.BusinessOperations.Doctors
                     var url = "~/Content/images/products/";
 
                     var path = HttpContext.Current.Server.MapPath(url);
+                    if (!Directory.Exists(path))
+                        Directory.CreateDirectory(path);
+
                     _image.InputStream.Seek(0, System.IO.SeekOrigin.Begin);
                     int point = _image.FileName.LastIndexOf('.');
                     var filename = _image.FileName.Substring(0, point) + "_" + DateTime.Now.ToFileTime();

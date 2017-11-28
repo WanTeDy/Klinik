@@ -65,7 +65,7 @@ namespace Klinik.Frontend.Areas.Cabinet.Controllers
             else
                 SessionHelpers.Session("user", session);
             //return RedirectToAction("Index", "Main");
-            return Json(new { url = Url.Action("Index", "Main") });
+            return Json(new { url = Url.Action("List", "Service") });
         }
 
         //[HttpPost]

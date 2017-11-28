@@ -1,0 +1,52 @@
+﻿@{
+    Layout = "~/Areas/Cabinet/Views/Shared/_Layout.cshtml";
+}
+@using Klinik.Utils.DataBase.Products
+
+@section Scripts {
+    @Scripts.Render("~/bundles/ajax")
+    <script>
+        $(function () {
+            $("textarea").jqte();
+        });
+    </script>
+    <script>
+        $('#issave').hide();
+        function SaveComplete() {
+            $('#issave').show(2000, function () {
+                $('#issave').hide(2000);
+            });
+        }
+    </script>
+}
+
+<div class="container" id="container">
+    <div class="navigation_string">
+        <div class="way">
+            <a href="/">Главная</a>
+            <pre> </pre>
+            <p>></p>
+            <pre> </pre>
+            <a href="/Cabinet/Service/List">Услуги</a>
+        </div>
+    </div>
+</div>
+<div class="information_topic">
+    <div class="container" id="container">
+        <div class="h2"><h2>Редактирование</h2></div>
+    </div>
+    <div class="container" id="container">
+        <div id="pagecontent">
+            <div class="list_1">
+                <h2 class="tabset_label">Table of Contents</h2>
+                <ul class="tabset_tabs">
+                    <li class="firstchild1"><a class="preActive active" href="/Cabinet/Service/List">Услуги</a></li>
+                    <li><a class="1" href="/Cabinet/Doctor/List">Доктора</a></li>
+                </ul>
+            </div>
+            <div class="header_admin1">
+                @Html.Partial("Partial/_prodAddPartial", new Product())
+            </div>
+        </div>
+    </div>
+</div>

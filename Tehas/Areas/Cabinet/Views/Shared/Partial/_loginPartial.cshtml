@@ -1,4 +1,4 @@
-﻿@model Tehas.Frontend.Models.LoginModel
+﻿@model Klinik.Frontend.Models.LoginModel
 <style>
     .error {
         font-size:12px;
@@ -24,7 +24,7 @@
     <h5>@Html.ValidationMessageFor(model => model.Password, null, new { @class = "error" })</h5>
 
     <div id="lower">
-        <input type="checkbox" name="IsSave"><label class="check" for="checkbox">Запомнить меня</label>
+        @*<input type="checkbox" name="IsSave"><label class="check" for="checkbox">Запомнить меня</label>*@
         <input type="submit" class="button confirm-button" value="Войти">
     </div>
 }

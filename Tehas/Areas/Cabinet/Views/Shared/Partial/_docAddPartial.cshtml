@@ -1,0 +1,41 @@
+﻿@model Klinik.Utils.DataBase.Security.Doctor
+
+@using (Html.BeginForm("add", "doctor", FormMethod.Post, new { enctype = "multipart/form-data" }))
+
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(x => x.Id)
+    <div class="add_description>">
+        <h3>Имя:</h3>
+        @Html.TextBoxFor(x => x.Name, new { @size = "40", @class = "_cost_" })
+        <h3>Фамилия:</h3>
+        @Html.TextBoxFor(x => x.Surname, new { @size = "40", @class = "_cost_" })
+        <h3>Отчество:</h3>
+        @Html.TextBoxFor(x => x.FatherName, new { @size = "40", @class = "_cost_" })
+        <h3>Должность:</h3>
+        @Html.TextBoxFor(x => x.Position, new { @size = "40", @class = "_cost_" })
+        <h3>Девиз:</h3>
+        @Html.TextBoxFor(x => x.Slogan, new { @size = "40", @class = "_cost_" })
+        <h3>Порядок сортировки:</h3>
+        @Html.TextBoxFor(x => x.OrderNum, new { @size = "40", @class = "_cost_" })
+
+        <h3>Описание:</h3>
+        @Html.TextAreaFor(x => x.Description, new { @cols = "40", @rows = "10" })
+    </div>
+    <div class="add_photo">
+        <div class="photo">
+            @if (Model.Image != null)
+            {
+                <img src="@Url.Content(Model.Image.Url + Model.Image.FileName)" width="272" height="211" />
+            }
+            <div class="file_upload">
+                <input name="image" accept="image/*" type="file" class="select_photo">
+            </div>
+        </div>
+    </div>
+    <input type="submit" value="Сохранить" class="add_button">
+    <div id="issave" class="add_video">
+        <p class="yt">Изменения сохранены</p>
+    </div>
+    
+}

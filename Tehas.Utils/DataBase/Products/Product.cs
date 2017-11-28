@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Klinik.Utils.DataBase.Security;
 using Klinik.Utils.Helpers;
+using System.Web.Mvc;
 
 namespace Klinik.Utils.DataBase.Products
 {
@@ -14,6 +15,7 @@ namespace Klinik.Utils.DataBase.Products
         /// <summary>
         /// Discription for this product
         /// </summary>
+        [AllowHtml]
         public String Description { get; set; }
 
         //public virtual Category Category { get; set; }        

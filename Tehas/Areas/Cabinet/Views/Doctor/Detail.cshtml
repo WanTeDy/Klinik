@@ -1,10 +1,15 @@
 ﻿@{
     Layout = "~/Areas/Cabinet/Views/Shared/_Layout.cshtml";
 }
-@model Tehas.Frontend.Areas.Cabinet.Models.GameModel
+@model Klinik.Utils.DataBase.Security.Doctor
 
 @section Scripts {
     @Scripts.Render("~/bundles/ajax")
+    <script>
+        $(function () {
+            $("textarea").jqte();
+        });
+    </script>
     <script>
         $(document).ready(function () {
             $('#issave').hide();
@@ -15,7 +20,6 @@
                 $('#issave').hide(2000);
             });
         }
-
     </script>
 }
 
@@ -26,7 +30,7 @@
             <pre> </pre>
             <p>></p>
             <pre> </pre>
-            <a href="/Cabinet/Main">Админка</a>
+            <a href="/Cabinet/Doctor/List">Доктора</a>
         </div>
     </div>
 </div>
@@ -39,18 +43,13 @@
             <div class="list_1">
                 <h2 class="tabset_label">Table of Contents</h2>
                 <ul class="tabset_tabs">
-                    <li class="firstchild1"><a href="/Cabinet/Main" class="1">Главная</a></li>
-                    <li><a class="2" href="/Cabinet/Page/List">Типовые страницы</a></li>
-                    <li><a class="2" href="/Cabinet/Menu/List">Меню/Доставка</a></li>
-                    <li><a class="preActive active" href="/Cabinet/Game/List">Игры/Тарифы</a></li>
-                    <li><a class="2" href="/Cabinet/Comment/List">Комментарии</a></li>
+                    <li class="firstchild1"><a class="1" href="/Cabinet/Service/List">Услуги</a></li>
+                    <li><a class="preActive active" href="/Cabinet/Doctor/List">Доктора</a></li>
                 </ul>
             </div>
-
-
             <div class="header_admin1">
-                
-                @Html.Partial("Partial/_gamePartial", Model.Game)
+
+                @Html.Partial("Partial/_docPartial", Model)
 
             </div>
         </div>

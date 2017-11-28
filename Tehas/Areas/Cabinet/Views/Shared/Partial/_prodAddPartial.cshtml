@@ -1,21 +1,15 @@
-﻿@model Tehas.Utils.DataBase.Products.Product
+﻿@model Klinik.Utils.DataBase.Products.Product
 
-@using (Html.BeginForm("add", "menu", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("add", "service", FormMethod.Post, new { enctype = "multipart/form-data" }))
 
 {
     @Html.AntiForgeryToken()
     @Html.HiddenFor(x => x.Id)
-    @Html.HiddenFor(x => x.CategoryId, new { @Id = "categoryId" })
     <div class="add_description>">
         <h3>Название:</h3>
         @Html.TextBoxFor(x => x.Title, new { @size = "40", @class = "_cost_" })
-        <h3>Точная цена:</h3>
-        @Html.TextBoxFor(x => x.Price, new { @size = "40", @class = "_cost_" })
-
         <h3>Описание:</h3>
         @Html.TextAreaFor(x => x.Description, new { @cols = "40", @rows = "10" })
-        <h3>Hot:</h3>
-        @Html.CheckBoxFor(x => x.IsHot)
     </div>
     <div class="add_photo">
         <div class="photo">
@@ -32,4 +26,5 @@
     <div id="issave" class="add_video">
         <p class="yt">Изменения сохранены</p>
     </div>
+    
 }

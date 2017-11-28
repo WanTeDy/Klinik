@@ -202,6 +202,8 @@
     <Content Include="Content\fancybox\fancy_title_left.png" />
     <Content Include="Content\fancybox\fancy_title_main.png" />
     <Content Include="Content\fancybox\fancy_title_right.png" />
+    <Content Include="Content\styleAdmin.css" />
+    <Content Include="Content\tabtastic.css" />
     <Content Include="Content\images\1.png" />
     <Content Include="Content\images\about.jpg" />
     <Content Include="Content\images\arrow_down.png" />
@@ -263,24 +265,21 @@
     <Content Include="Areas\Cabinet\Views\web.config" />
     <Content Include="Areas\Cabinet\Views\Authorize\Login.cshtml" />
     <Content Include="Areas\Cabinet\Views\Shared\Partial\_loginPartial.cshtml" />
-    <Content Include="Areas\Cabinet\Views\Page\List.cshtml" />
     <Content Include="Areas\Cabinet\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Cabinet\Views\Main\Index.cshtml" />
-    <Content Include="Areas\Cabinet\Views\Page\Detail.cshtml" />
-    <Content Include="Areas\Cabinet\Views\Menu\List.cshtml" />
-    <Content Include="Areas\Cabinet\Views\Shared\Partial\_pagePartial.cshtml" />
+    <Content Include="Areas\Cabinet\Views\Service\List.cshtml" />
     <Content Include="Areas\Cabinet\Views\Shared\Partial\_listOfProductsPartial.cshtml" />
-    <Content Include="Areas\Cabinet\Views\Menu\Detail.cshtml" />
+    <Content Include="Areas\Cabinet\Views\Service\Detail.cshtml" />
     <Content Include="Areas\Cabinet\Views\Shared\Partial\_prodAddPartial.cshtml" />
-    <Content Include="Areas\Cabinet\Views\Menu\Add.cshtml" />
+    <Content Include="Areas\Cabinet\Views\Service\Add.cshtml" />
     <Content Include="Areas\Cabinet\Views\Shared\Partial\_prodPartial.cshtml" />
-    <Content Include="Areas\Cabinet\Views\Game\Add.cshtml" />
-    <Content Include="Areas\Cabinet\Views\Game\Detail.cshtml" />
-    <Content Include="Areas\Cabinet\Views\Game\List.cshtml" />
-    <Content Include="Areas\Cabinet\Views\Shared\Partial\_gamePartial.cshtml" />
-    <Content Include="Areas\Cabinet\Views\Shared\Partial\_listOfGamesPartial.cshtml" />
     <Content Include="Areas\Cabinet\Views\Comment\List.cshtml" />
     <Content Include="Areas\Cabinet\Views\Shared\Partial\_listOfCommentsPartial.cshtml" />
+    <Content Include="Areas\Cabinet\Views\Doctor\Add.cshtml" />
+    <Content Include="Areas\Cabinet\Views\Doctor\Detail.cshtml" />
+    <Content Include="Areas\Cabinet\Views\Doctor\List.cshtml" />
+    <Content Include="Areas\Cabinet\Views\Shared\Partial\_listOfDoctorsPartial.cshtml" />
+    <Content Include="Areas\Cabinet\Views\Shared\Partial\_docAddPartial.cshtml" />
+    <Content Include="Areas\Cabinet\Views\Shared\Partial\_docPartial.cshtml" />
     <None Include="Properties\PublishProfiles\smarter.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jcarousellite_1.0.1c5.js" />
@@ -333,7 +332,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Cabinet\Views\Image\" />
+    <Folder Include="Content\wysiwyg\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

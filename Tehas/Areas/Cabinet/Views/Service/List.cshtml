@@ -1,33 +1,10 @@
-﻿@using Tehas.Frontend.Areas.Cabinet.Models
-@model List<Tehas.Utils.DataBase.Products.Game>
+﻿@using Klinik.Utils.DataBase.Products
+@model List<Product>
 @{
     Layout = "~/Areas/Cabinet/Views/Shared/_Layout.cshtml";
 }
 @section Scripts {
-    <script>
-        function getSortedProducts() {
-            var id = $('#category').val();
-            var obj = {
-                "Id": id
-            }
-
-            var json = JSON.stringify(obj);
-
-            $.ajax({
-                url: "/cabinet/menu/list",
-                type: "POST",
-                contentType: 'application/json; charset=utf-8',
-                data: json,
-                success: function (response) {
-                    $("table.added").html(response);
-                },
-                error: function (response) {
-                    //    $(loadingId).hide();
-                    //    $("<span>Извините, при обработке запроса произошла ошибка. Пожалуйста обновите страницу</span>").appendTo($(container));
-                }
-            });
-        }
-
+    <script>        
         function deleteChekedProducts() {
             var elements = $('.checkbox:checked');
             var count = elements.length;
@@ -40,17 +17,15 @@
         }
 
         function deleteProducts(ids) {
-            if (confirm("Вы действительно хотите удалить продукты?")) {
-                var id = $('#category').val();
+            if (confirm("Вы действительно хотите удалить услуги?")) {
                 var obj = {
-                    "ProductsId": ids,
-                    "CategoryId": id
+                    "ids": ids,
                 }
 
                 var json = JSON.stringify(obj);
 
                 $.ajax({
-                    url: "/cabinet/menu/delete",
+                    url: "/cabinet/service/delete",
                     type: "POST",
                     contentType: 'application/json; charset=utf-8',
                     data: json,
@@ -74,7 +49,7 @@
             <pre> </pre>
             <p>></p>
             <pre> </pre>
-            <a href="/Cabinet/Main">Админка</a>
+            <a href="/Cabinet/Service/List">Услуги</a>
         </div>
     </div>
 </div>
@@ -87,11 +62,8 @@
             <div class="list_1">
                 <h2 class="tabset_label">Table of Contents</h2>
                 <ul class="tabset_tabs">
-                    <li class="firstchild1"><a href="/Cabinet/Main" class="1">Главная</a></li>
-                    <li><a class="1" href="/Cabinet/Page/List">Типовые страницы</a></li>
-                    <li><a class="2" href="/Cabinet/Menu/List">Меню/Доставка</a></li>
-                    <li><a class="preActive active" href="/Cabinet/Game/List">Игры/Тарифы</a></li>
-                    <li><a class="2" href="/Cabinet/Comment/List">Комментарии</a></li>
+                    <li class="firstchild1"><a class="preActive active" href="/Cabinet/Service/List">Услуги</a></li>
+                    <li><a class="1" href="/Cabinet/Doctor/List">Доктора</a></li>
                 </ul>
             </div>
 
@@ -99,12 +71,17 @@
                 <h2 class="tabset_label">adminka</h2>
 
                 <div class="headline">
-                    <h2>Игровые тарифы:</h2>
-                    
+                    <h2>Список услуг:</h2>
                 </div>
-                <div class="added">                   
+                <div class="added">
+                    <div class="buttons">
+                        <form method="LINK" action="/cabinet/service/add">
+                            <button class="add_new">Добавить новую услугу ►</button>
+                        </form>
+                        <button class="delete_all" onclick="deleteChekedProducts();">Удалить выбранные</button>
+                    </div>
                     <table class="added">
-                        @Html.Partial("Partial/_listOfGamesPartial", Model)
+                        @Html.Partial("Partial/_listOfProductsPartial", Model)
                     </table>
                 </div>
             </div>

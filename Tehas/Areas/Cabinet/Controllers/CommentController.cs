@@ -5,7 +5,6 @@ using System.Web;
 using System.Web.Mvc;
 using Klinik.Frontend.Areas.Cabinet.Models;
 using Klinik.Frontend.Helpers;
-using Klinik.Utils.BusinessOperations.PagesDesc;
 using Klinik.Utils.BusinessOperations.Products;
 using Klinik.Utils.BusinessOperations.Comments;
 using Klinik.Utils.DataBase.Products;

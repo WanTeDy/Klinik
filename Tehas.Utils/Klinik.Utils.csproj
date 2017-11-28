@@ -126,6 +126,10 @@
     <Compile Include="Except\ReHouseException.cs" />
     <Compile Include="Helpers\GenerateHash.cs" />
     <Compile Include="Helpers\SmtpEmailSender.cs" />
+    <Compile Include="Migrations\201711281837226_data.cs" />
+    <Compile Include="Migrations\201711281837226_data.Designer.cs">
+      <DependentUpon>201711281837226_data.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -133,7 +137,11 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201711281837226_data.resx">
+      <DependentUpon>201711281837226_data.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

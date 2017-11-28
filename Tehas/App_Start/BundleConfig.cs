@@ -11,6 +11,9 @@ namespace Klinik.Frontend
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery.min.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/wysiwyg").Include(
+                        "~/Content/wysiwyg/jquery-te-1.4.0.min.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/ajax").Include(
                         "~/Scripts/jquery.unobtrusive-ajax.min.js"));
             
@@ -39,8 +42,11 @@ namespace Klinik.Frontend
                       "~/Content/reset.css"
                       ));
 
-            bundles.Add(new StyleBundle("~/Content/tabtastic").Include(                      
-                      "~/Content/tabtastic.css"
+            bundles.Add(new StyleBundle("~/Content/tabtastic").Include(
+                      "~/Content/styleAdmin.css",
+                      "~/Content/reset.css",
+                      "~/Content/tabtastic.css",
+                      "~/Content/wysiwyg/jquery-te-1.4.0.css"
                       ));
         }
     }
