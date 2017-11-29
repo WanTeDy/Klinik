@@ -1,0 +1,34 @@
+﻿@model Klinik.Utils.DataBase.Emails.Comment
+
+@using (Html.BeginForm("detail", "comment", FormMethod.Post, new { enctype = "multipart/form-data" }))
+
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(x => x.Id)
+    <div class="add_description>">
+        <h3>Имя:</h3>
+        @Html.TextBoxFor(x => x.Username, new { @size = "40", @class = "_cost_" })    
+        <h3>Компания:</h3>
+        @Html.TextBoxFor(x => x.Company, new { @size = "40", @class = "_cost_" })
+        <h3>Одобрено:</h3>
+        @Html.CheckBoxFor(x => x.IsModerated, new { @size = "40", @class = "_cost_" })
+            
+        <h3>Сообщение:</h3>
+        @Html.TextAreaFor(x => x.Message, new { @cols = "40", @rows = "10" })        
+    </div>
+    <div class="add_photo">
+        <div class="photo">
+            @if (Model.Image != null)
+            {
+                <img src="@Url.Content(Model.Image.Url + Model.Image.FileName)" width="272" height="211" />
+            }
+            <div class="file_upload">
+                <input name="image" accept="image/*" type="file" class="select_photo">
+            </div>
+        </div>
+    </div>
+    <input type="submit" value="Сохранить" class="add_button">
+    <div id="issave" class="add_video">
+        <p class="yt">Изменения сохранены</p>
+    </div>
+}

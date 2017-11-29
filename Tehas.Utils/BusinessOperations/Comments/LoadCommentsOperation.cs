@@ -29,7 +29,9 @@ namespace Klinik.Utils.BusinessOperations.Comments
             }
             else
             {
-                _comments = Context.Comments.Where(x => x.IsModerated && !x.Deleted).OrderByDescending(x => x.Date).Skip((_page - 1) * _count).Take(_count).ToList();
+                _comments = Context.Comments.Where(x => x.IsModerated && !x.Deleted).OrderByDescending(x => x.Date)
+                    .Skip((_page - 1) * _count).Take(_count)
+                    .ToList();
             }
         }
     }

@@ -1,7 +1,7 @@
 ﻿@{
     Layout = "~/Areas/Cabinet/Views/Shared/_Layout.cshtml";
 }
-@using Klinik.Utils.DataBase.Security
+@model Klinik.Utils.DataBase.Emails.Comment
 
 @section Scripts {
     @Scripts.Render("~/bundles/ajax")
@@ -11,7 +11,10 @@
         });
     </script>
     <script>
-        $('#issave').hide();
+        $(document).ready(function () {
+            $('#issave').hide();
+        });
+
         function SaveComplete() {
             $('#issave').show(2000, function () {
                 $('#issave').hide(2000);
@@ -41,12 +44,14 @@
                 <h2 class="tabset_label">Table of Contents</h2>
                 <ul class="tabset_tabs">
                     <li class="firstchild1"><a class="1" href="/Cabinet/Service/List">Услуги</a></li>
-                    <li><a class="preActive active" href="/Cabinet/Doctor/List">Доктора</a></li>
-                    <li><a class="1" href="/Cabinet/Comment/List">Отзывы</a></li>
+                    <li><a class="1" href="/Cabinet/Doctor/List">Доктора</a></li>
+                    <li><a class="preActive active" href="/Cabinet/Comment/List">Отзывы</a></li>
                 </ul>
             </div>
             <div class="header_admin1">
-                @Html.Partial("Partial/_docAddPartial", new Doctor())
+
+                @Html.Partial("Partial/_comPartial", Model)
+
             </div>
         </div>
     </div>

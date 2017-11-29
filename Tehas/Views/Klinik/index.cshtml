@@ -1,5 +1,6 @@
 ﻿@using Klinik.Utils.DataBase.Security
 @using Klinik.Utils.DataBase.Products
+@using Klinik.Utils.DataBase.Emails
 @section Scripts {
     @Scripts.Render("~/bundles/ajax")
     @Scripts.Render("~/Scripts/jqueryval")
@@ -22,6 +23,36 @@
             e.preventDefault();
             $('._comment').toggle(750);
         }
+
+        var count = @(ViewBag.Comments != null ? ViewBag.Comments.Count : 0);
+        var btns = [];
+        for(var i = 1; i<= count; i++) {
+            btns.push("." + i);
+        }
+
+        $(function () {
+            $('#slidebox').jCarouselLite({
+                vertical: false,
+                hoverPause: true,
+                btnPrev: ".previous",
+                btnNext: ".next",
+                visible: 1,
+                start: 0,
+                scroll: 1,
+                circular: true,
+                auto: 6000,
+                speed: 900,
+                btnGo: btns,
+
+                afterEnd: function (a, to, btnGo) {
+                    if (btnGo.length <= to) {
+                        to = 0;
+                    }
+                    $(".thumbActive").removeClass("thumbActive");
+                    $(btnGo[to]).addClass("thumbActive");
+                }
+            });
+        });
     </script>
 }
 <div class="video" controls="controls">
@@ -41,10 +72,11 @@
             <img src="~/Content/images/about.jpg">
         </div>
         <div class="text">
-            <p>Стоматология « KLINIK IM ZENTRUM»  - это созданный  только для Вас особый мир,
-где на первом  месте Ваше здоровье и Вы превыше всего.
-Добро пожаловать!
-</p><br /><p style="text-align:right;">С любовью к Вам « KLINIK IM ZENTRUM»</p>
+            <p>
+                Стоматология « KLINIK IM ZENTRUM»  - это созданный  только для Вас особый мир,
+                где на первом  месте Ваше здоровье и Вы превыше всего.
+                Добро пожаловать!
+            </p><br /><p style="text-align:right;">С любовью к Вам « KLINIK IM ZENTRUM»</p>
         </div>
     </div>
 </div>
@@ -101,8 +133,12 @@
                 <input id="ac-1" name="accordion-1" type="checkbox" />
                 <label for="ac-1">Диагностика</label>
                 <article class="ac-small">
-                    <div><p style="text-align: left;">Консультация специалиста с предоставлением плана лечения</p><p>100,00 -
-150,00</p></div>
+                    <div>
+                        <p style="text-align: left;">Консультация специалиста с предоставлением плана лечения</p><p>
+                            100,00 -
+                            150,00
+                        </p>
+                    </div>
                 </article>
             </div>
 
@@ -207,80 +243,52 @@
 <div class="h2" id="feedbacks"><h2>Отз<span class="blue">ывы</span></h2></div>
 <div class="comment">
     <div class="slidebox" id="slidebox">
-        <ul>
-            <li>
-                <div class="wrapper-li">
-                    <div class="info">
-                        <div class="img">
-                            <img src="~/Content/images/man.png" width="139px" height="130px">
+        @if (ViewBag.Comments != null)
+        {
+            <ul>
+                @foreach (Comment com in ViewBag.Comments)
+                {
+                    <li>
+                        <div class="wrapper-li">
+                            <div class="info">
+                                <div class="img">
+                                    @if (com.Image != null)
+                                    {
+                                        <img src="@Url.Content(com.Image.Url + com.Image.FileName)" width="139px" height="130px">
+                                    }
+                                    else
+                                    {
+                                        <img src="~/Content/images/man.png" width="139px" height="130px">
+                                    }
+                                </div>
+                                <div class="information">
+                                    <h3>@com.Username</h3>
+                                    <h4>@com.Company</h4>
+                                </div>
+                            </div>
+                            <div class="text-comm">
+                                <p>@com.Message</p>
+                            </div>
                         </div>
-                        <div class="information">
-                            <h3>Иван Иванов</h3>
-                            <h4>Стоматолог</h4>
-                        </div>
-                    </div>
-                    <div class="text-comm">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum d</p>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="wrapper-li">
-                    <div class="info">
-                        <div class="img">
-                            <img src="~/Content/images/man.png" width="139px" height="130px">
-                        </div>
-                        <div class="information">
-                            <h3>Иван Иванов</h3>
-                            <h4>Стоматолог</h4>
-                        </div>
-                    </div>
-                    <div class="text-comm">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum d</p>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="wrapper-li">
-                    <div class="info">
-                        <div class="img">
-                            <img src="~/Content/images/man.png" width="139px" height="130px">
-                        </div>
-                        <div class="information">
-                            <h3>Иван Иванов</h3>
-                            <h4>Стоматолог</h4>
-                        </div>
-                    </div>
-                    <div class="text-comm">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum d</p>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="wrapper-li">
-                    <div class="info">
-                        <div class="img">
-                            <img src="~/Content/images/man.png" width="139px" height="130px">
-                        </div>
-                        <div class="information">
-                            <h3>Иван Иванов</h3>
-                            <h4>Стоматолог</h4>
-                        </div>
-                    </div>
-                    <div class="text-comm">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum d</p>
-                    </div>
-                </div>
-            </li>
-        </ul>
-        <div class="next"></div>
-        <div class="previous"></div>
-        <div class="thumbs">
-            <a href="#" onclick="" class="1 thumbActive" id="a"></a>
-            <a href="#" onclick="" class="2" id="b"></a>
-            <a href="#" onclick="" class="3" id="c"></a>
-            <a href="#" onclick="" class="4" id="d"></a>
-        </div>
+                    </li>
+                }
+            </ul>
+            <div class="next"></div>
+            <div class="previous"></div>
+            <div class="thumbs">
+                @for (var i = 1; i <= ViewBag.Comments.Count; i++)
+                {
+                    if (i == 1)
+                    {
+                        <a href="#" onclick="" class="1 thumbActive" id="a"></a>
+                    }
+                    else
+                    {
+                        <a href="#" onclick="" class="@(i)" id="b"></a>
+                    }
+                }
+            </div>
+        }
     </div>
     <a href="#" onclick="makeFeedback(event);" class="todo_comm">Оставить отзыв</a>
 </div>

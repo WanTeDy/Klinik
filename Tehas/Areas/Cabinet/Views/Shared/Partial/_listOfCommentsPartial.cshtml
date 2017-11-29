@@ -7,7 +7,13 @@
         <td>@prod.Username</td>
         <td>@prod.Message</td>
         <td>
-            Отобразить <input type="checkbox" class="checkbox" onclick="changeState(@prod.Id, this);" checked="@prod.IsModerated"/>
+            @(prod.IsModerated?"Одобрено" : "Не одобрено")/>
+        </td>
+        <td>
+            @if (prod.Image != null)
+            {
+                <img src="@Url.Content(prod.Image.Url + prod.Image.FileName)" style="width:200px; height:150px" />
+            }
         </td>
         <td>
             <div class="edit_del">                

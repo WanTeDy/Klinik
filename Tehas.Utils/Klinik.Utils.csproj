@@ -94,6 +94,8 @@
     <Compile Include="BusinessOperations\Comments\DeleteCommentsOperation.cs" />
     <Compile Include="BusinessOperations\Comments\EditCommentsOperation.cs" />
     <Compile Include="BusinessOperations\Comments\LoadCommentsOperation.cs" />
+    <Compile Include="BusinessOperations\Comments\LoadCommentOperation.cs" />
+    <Compile Include="BusinessOperations\Comments\UpdateCommentOperation.cs" />
     <Compile Include="BusinessOperations\HashHelper.cs" />
     <Compile Include="BusinessOperations\Images\DeleteImageOperation.cs" />
     <Compile Include="BusinessOperations\Orders\SendMailOperation.cs" />
