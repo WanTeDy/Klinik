@@ -177,7 +177,7 @@ nav.codrops-demos a:hover {
 	 background-repeat: no-repeat;
     background-image: url("../Content/images/bg-video.jpg");
     background-size: cover;
-    margin-top: 25px;
+    margin-top: 28px;
 }
 .about_us {
 	/*max-width: 1366px;*/
@@ -612,6 +612,7 @@ background: none;
 }
 .our_team .d-carousel ul li img {
 	object-fit: cover;
+    object-position:top;
 	width: 259px;
 	height: 315px;
 	box-shadow: 0 1px 20px 3px rgba(0, 0, 0, 0.35);
@@ -958,6 +959,7 @@ ul.carousel li p {
 .contacts .info {
 	margin-top: 31px;
 	padding-bottom: 39px;
+    padding-left: 10px;
 }
 
 /*//*/
@@ -2667,6 +2669,18 @@ video {
 }
 .contacts .info .point p {
     margin-left: 0px;
+    font-size: 16px;
+}
+.contacts .info p {
+    color: #81787e;
+    font-family: Calibri;
+    font-size: 16px;
+    font-weight: 400;
+    margin: 0;
+    margin-left: 7px;
+}
+.contacts .info .tel, .gmail {
+    margin-bottom: 20px;
 }
 
 .img-circle {
