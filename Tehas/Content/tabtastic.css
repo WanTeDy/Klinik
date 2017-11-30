@@ -65,15 +65,11 @@ li.firstchild1 {
 	padding:15px 0 15px 15px; 
 
 	letter-spacing: 2px;
-	font-family: "Decree Art One";
+	font-family: Calibri;
 	font-size: 24px;
 	font-weight: bold;
 }
-.tabset_tabs a:hover { 
-	color:gold; background-color: rgba(3, 2, 2, 0.4);
-	padding:15px 0 15px 15px;
-		transition: .5s ease;
-}
+
 .tabset_tabs a.active { 
 	color:#af4aa2; 
 	border-left-width:1px; 

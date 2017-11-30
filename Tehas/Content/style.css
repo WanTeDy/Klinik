@@ -1173,6 +1173,15 @@ font-weight: 700;
 	padding-bottom: 5px;
 	text-align: center;
 }
+.footer p a {
+	color: #989798;
+font-family: Calibri;
+font-size: 16px;
+font-weight: 700;
+}
+.footer p a:hover {
+	color: #163dce;
+}
 #toTop {
     padding: 5px;
     border-radius: 50px;
