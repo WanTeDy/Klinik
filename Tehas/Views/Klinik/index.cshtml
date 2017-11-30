@@ -30,28 +30,30 @@
             btns.push("." + i);
         }
 
-        $(function () {
-            $('#slidebox').jCarouselLite({
-                vertical: false,
-                hoverPause: true,
-                btnPrev: ".previous",
-                btnNext: ".next",
-                visible: 1,
-                start: 0,
-                scroll: 1,
-                circular: true,
-                auto: 6000,
-                speed: 900,
-                btnGo: btns,
+        $(function() {
+            if(count > 0) {
+                $('#slidebox').jCarouselLite({
+                    vertical: false,
+                    hoverPause: true,
+                    btnPrev: ".previous",
+                    btnNext: ".next",
+                    visible: 1,
+                    start: 0,
+                    scroll: 1,
+                    circular: true,
+                    auto: 6000,
+                    speed: 900,
+                    btnGo: btns,
 
-                afterEnd: function (a, to, btnGo) {
-                    if (btnGo.length <= to) {
-                        to = 0;
+                    afterEnd: function(a, to, btnGo) {
+                        if (btnGo.length <= to) {
+                            to = 0;
+                        }
+                        $(".thumbActive").removeClass("thumbActive");
+                        $(btnGo[to]).addClass("thumbActive");
                     }
-                    $(".thumbActive").removeClass("thumbActive");
-                    $(btnGo[to]).addClass("thumbActive");
-                }
-            });
+                });
+            }
         });
     </script>
 }

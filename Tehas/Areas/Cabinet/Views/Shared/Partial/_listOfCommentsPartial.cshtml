@@ -7,7 +7,7 @@
         <td>@prod.Username</td>
         <td>@prod.Message</td>
         <td>
-            @(prod.IsModerated?"Одобрено" : "Не одобрено")/>
+            @(prod.IsModerated?"Одобрено" : "Не одобрено")
         </td>
         <td>
             @if (prod.Image != null)
@@ -16,7 +16,12 @@
             }
         </td>
         <td>
-            <div class="edit_del">                
+            <div class="edit_del">
+                <form method="LINK" action="/cabinet/comment/detail/@prod.Id">
+                    <button>Редактировать</button>
+                </form>
+                <pre> </pre>
+                <pre> </pre>                
                 <button onclick="deleteProducts([@prod.Id])">Удалить</button>
             </div>
         </td>
