@@ -554,8 +554,8 @@ width:100%;
  	margin-bottom:18px;
 }
 .information_topic .h2 h2 {
-	color: #d48b24;
-	font-family: "Decree Art One";
+	color: #af4aa2;
+	font-family: Calibri;
 	font-size: 24px;
 	font-weight: bold;
 	text-transform: uppercase;
@@ -583,7 +583,7 @@ width:100%;
 	height: 33px;
 
 	color: #ffffff;
-	font-family: "Decree Art One";
+	    font-family: Calibri;
 	font-size: 24px;
 	font-weight: bold;
 	text-transform: uppercase;
@@ -598,7 +598,7 @@ width:100%;
 }
 .list_of_prod table tr.prod {
 	color: #c85634;
-	font-family: "Arial";
+	    font-family: Calibri;
 	font-size: 16px;
 	font-weight: bold;
 	letter-spacing: 2px;
@@ -611,7 +611,7 @@ width:100%;
     height: 18px;
     color: #c85634;
     border: 1px solid #c85634;
-    font-family: "Decree Art One";
+        font-family: Calibri;
 	font-size: 16px;
 	font-weight: bold;
 	letter-spacing: 2px;
@@ -625,9 +625,7 @@ width:100%;
 }
 
 #login {
-	
-
-	font-family: Arial;
+	    font-family: Calibri;
 	font-size: 18px;
 	font-weight: bold;
 }
@@ -675,7 +673,7 @@ width:100%;
 box-sizing: border-box;
 
     
-    font-family: "Decree Art One";
+        font-family: Calibri;
     font-size: 24px;
     font-weight: bold;
     text-transform: uppercase;
@@ -711,7 +709,7 @@ box-sizing: border-box;
 	border:1px solid #cc9549;
 	border-radius: 8px;
 
-	font-family: "Arial";
+	    font-family: Calibri;
     font-size: 24px;
     font-weight: bold;
 }
@@ -720,7 +718,7 @@ box-sizing: border-box;
 }
 .form_order form button	{
 	background-color: #cc9549;
-	font-family: "Arial";
+	    font-family: Calibri;
     font-size: 24px;
     font-weight: bold;
     padding: 8px;
@@ -747,7 +745,7 @@ box-sizing: border-box;
 .gallery .to_do_order a {
 	position: relative;
 	color: #d48b24;
-    font-family: "Decree Art One";
+        font-family: Calibri;
     font-size: 18px;
     font-weight: bold;
     text-transform: uppercase;
@@ -800,7 +798,7 @@ box-sizing: border-box;
 .gallery .appendix_lazertag .min-cart a {
 	position: relative;
     color: #d48b24;
-    font-family: "Decree Art One";
+        font-family: Calibri;
     font-size: 18px;
     font-weight: bold;
     text-transform: uppercase;
@@ -1014,6 +1012,9 @@ margin-left: 48%;
 }
 
 
+.header {
+    display:none;
+}
 
 
 
