@@ -18,7 +18,7 @@
         function deleteProducts(ids) {
             if (confirm("Вы действительно хотите удалить комментарии?")) {                
                 var obj = {
-                    "ProductsId": ids
+                    ids: ids
                 }
 
                 var json = JSON.stringify(obj);
@@ -37,32 +37,7 @@
                     }
                 });
             }
-        }
-        function changeState(id, element) {
-
-            var state = $(element).prop("checked");
-                    var obj = {
-                        "Id": id,
-                        "IsModerated" : state
-                    }
-
-                    var json = JSON.stringify(obj);
-
-                    $.ajax({
-                        url: "/cabinet/comment/changestate",
-                        type: "POST",
-                        contentType: 'application/json; charset=utf-8',
-                        data: json,
-                        success: function (response) {
-                        
-                        },
-                        error: function (response) {
-                            //    $(loadingId).hide();
-                            //    $("<span>Извините, при обработке запроса произошла ошибка. Пожалуйста обновите страницу</span>").appendTo($(container));
-                        }
-                    });
-            }
-
+        }        
     </script>
 }
 
@@ -73,7 +48,7 @@
             <pre> </pre>
             <p>></p>
             <pre> </pre>
-            <a href="/Cabinet/Main">Админка</a>
+            <a href="/Cabinet/Comments/List">Отзывы</a>
         </div>
     </div>
 </div>
@@ -82,15 +57,16 @@
         <div class="h2"><h2>Редактирование</h2></div>
     </div>
     <div class="container" id="container">
+        <div class="h2"><h2>Редактирование</h2></div>
+    </div>
+    <div class="container" id="container">
         <div id="pagecontent">
             <div class="list_1">
                 <h2 class="tabset_label">Table of Contents</h2>
                 <ul class="tabset_tabs">
-                    <li class="firstchild1"><a href="/Cabinet/Main" class="1">Главная</a></li>
-                    <li><a class="1" href="/Cabinet/Page/List">Типовые страницы</a></li>
-                    <li><a class="2" href="/Cabinet/Menu/List">Меню/Доставка</a></li>
-                    <li><a class="2" href="/Cabinet/Game/List">Игры/Тарифы</a></li>
-                    <li><a class="preActive active" href="/Cabinet/Comment/List">Комментарии</a></li>
+                    <li class="firstchild1"><a class="1" href="/Cabinet/Service/List">Услуги</a></li>
+                    <li><a class="1" href="/Cabinet/Doctor/List">Доктора</a></li>
+                    <li><a class="preActive active" href="/Cabinet/Comment/List">Отзывы</a></li>
                 </ul>
             </div>
 
@@ -98,7 +74,7 @@
                 <h2 class="tabset_label">adminka</h2>
 
                 <div class="added">
-                    <div class="buttons">                        
+                    <div class="buttons">
                         <button class="delete_all" onclick="deleteChekedProducts();">Удалить выбранные</button>
                     </div>
                     <table class="added">

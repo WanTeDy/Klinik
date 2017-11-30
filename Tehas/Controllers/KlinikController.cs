@@ -25,6 +25,9 @@ namespace Klinik.Frontend.Controllers
             var op2 = new LoadAllProductsOperation();
             op2.ExcecuteTransaction();
             ViewBag.Products = op2._products;
+            var op3 = new LoadCommentsOperation(1, 4);
+            op3.ExcecuteTransaction();
+            ViewBag.Comments = op3._comments;
             ViewBag.NavMenuEnabled = true;
             return View(/*op._pageDescription*/);
         }

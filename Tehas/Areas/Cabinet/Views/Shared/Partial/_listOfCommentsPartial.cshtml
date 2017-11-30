@@ -7,10 +7,21 @@
         <td>@prod.Username</td>
         <td>@prod.Message</td>
         <td>
-            Отобразить <input type="checkbox" class="checkbox" onclick="changeState(@prod.Id, this);" checked="@prod.IsModerated"/>
+            @(prod.IsModerated?"Одобрено" : "Не одобрено")
         </td>
         <td>
-            <div class="edit_del">                
+            @if (prod.Image != null)
+            {
+                <img src="@Url.Content(prod.Image.Url + prod.Image.FileName)" style="width:200px; height:150px" />
+            }
+        </td>
+        <td>
+            <div class="edit_del">
+                <form method="LINK" action="/cabinet/comment/detail/@prod.Id">
+                    <button>Редактировать</button>
+                </form>
+                <pre> </pre>
+                <pre> </pre>                
                 <button onclick="deleteProducts([@prod.Id])">Удалить</button>
             </div>
         </td>

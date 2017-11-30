@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Klinik.Utils.DataBase.Security;
+using Klinik.Utils.DataBase.Products;
 
 namespace Klinik.Utils.DataBase.Emails
 {
@@ -26,5 +27,7 @@ namespace Klinik.Utils.DataBase.Emails
         /// Is comment past moderation
         /// </summary> 
         public Boolean IsModerated { get; set; }
+
+        public virtual Image Image { get; set; }
     }
 }
