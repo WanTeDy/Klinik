@@ -2,11 +2,14 @@
 @foreach (var prod in Model)
 {
     <tr>
-        <td><input type="checkbox" class="checkbox" id="checkbox" value="@prod.Id"/></td>
+        <td><input type="checkbox" class="checkbox" id="checkbox" value="@prod.Id" /></td>
         <td>
             <div class="prod_info">
                 <h3>@prod.ShortName</h3>
-                <img src="@Url.Content(prod.Image.Url+prod.Image.FileName)" width="100" height="100" alt="" />
+                @if (prod.Image != null)
+                {
+                    <img src="@Url.Content(prod.Image.Url + prod.Image.FileName)" width="100" height="100" alt="" />
+                }
             </div>
         </td>
         <td>

@@ -75,6 +75,16 @@
                 scroll: 1
             });
         });
+
+        $(window).load(function () {
+            var video = document.getElementById('video');
+            var mp4 = document.getElementById('videoSource');
+
+            mp4.src = "/Content/video/about.mp4";
+
+            video.load();
+            video.play();
+        });
     </script>
 </body>
 </html>

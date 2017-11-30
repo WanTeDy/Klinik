@@ -1,5 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -22,6 +24,8 @@
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
     <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -55,6 +59,10 @@
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
@@ -202,6 +210,52 @@
     <Content Include="Content\fancybox\fancy_title_left.png" />
     <Content Include="Content\fancybox\fancy_title_main.png" />
     <Content Include="Content\fancybox\fancy_title_right.png" />
+    <Content Include="Content\images\backup_full\1.png" />
+    <Content Include="Content\images\backup_full\about.jpg" />
+    <Content Include="Content\images\backup_full\arrow_down.png" />
+    <Content Include="Content\images\backup_full\arrow_up.png" />
+    <Content Include="Content\images\backup_full\bg-adv.png" />
+    <Content Include="Content\images\backup_full\bg-video.jpg" />
+    <Content Include="Content\images\backup_full\bg1.png" />
+    <Content Include="Content\images\backup_full\bgnoise_lg.jpg" />
+    <Content Include="Content\images\backup_full\blog-arrows.jpg" />
+    <Content Include="Content\images\backup_full\comment-bg.png" />
+    <Content Include="Content\images\backup_full\contract-g.png" />
+    <Content Include="Content\images\backup_full\contract.png" />
+    <Content Include="Content\images\backup_full\contract2-g.png" />
+    <Content Include="Content\images\backup_full\contract2.png" />
+    <Content Include="Content\images\backup_full\doctor.png" />
+    <Content Include="Content\images\backup_full\doctor2.png" />
+    <Content Include="Content\images\backup_full\doctor3.png" />
+    <Content Include="Content\images\backup_full\eblo.png" />
+    <Content Include="Content\images\backup_full\fb-h.png" />
+    <Content Include="Content\images\backup_full\fb.png" />
+    <Content Include="Content\images\backup_full\g.png" />
+    <Content Include="Content\images\backup_full\icon-check.png" />
+    <Content Include="Content\images\backup_full\icon-menu.png" />
+    <Content Include="Content\images\backup_full\insta-h.png" />
+    <Content Include="Content\images\backup_full\insta.png" />
+    <Content Include="Content\images\backup_full\logo.jpg" />
+    <Content Include="Content\images\backup_full\logo2.png" />
+    <Content Include="Content\images\backup_full\magnifier1.png" />
+    <Content Include="Content\images\backup_full\mail.png" />
+    <Content Include="Content\images\backup_full\man.png" />
+    <Content Include="Content\images\backup_full\mini.png" />
+    <Content Include="Content\images\backup_full\next-comm.png" />
+    <Content Include="Content\images\backup_full\next.png" />
+    <Content Include="Content\images\backup_full\noise.png" />
+    <Content Include="Content\images\backup_full\p.png" />
+    <Content Include="Content\images\backup_full\point.png" />
+    <Content Include="Content\images\backup_full\prev-comm.png" />
+    <Content Include="Content\images\backup_full\prev.png" />
+    <Content Include="Content\images\backup_full\q.png" />
+    <Content Include="Content\images\backup_full\quadro.png" />
+    <Content Include="Content\images\backup_full\s.png" />
+    <Content Include="Content\images\backup_full\service.png" />
+    <Content Include="Content\images\backup_full\shortcut.png" />
+    <Content Include="Content\images\backup_full\tel.png" />
+    <Content Include="Content\images\backup_full\we.jpg" />
+    <Content Include="Content\images\backup_full\world.png" />
     <Content Include="Content\styleAdmin.css" />
     <Content Include="Content\tabtastic.css" />
     <Content Include="Content\images\1.png" />
@@ -374,6 +428,13 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
