@@ -54,14 +54,17 @@ namespace Klinik.Utils.BusinessOperations.Doctors
                         Url = url,
                     };
                     var deleteImg = _doctor.Image;
-                    FileInfo fileInf = new FileInfo(path + deleteImg.FileName);
-                    if (fileInf.Exists)
+                    if (deleteImg != null)
                     {
-                        fileInf.Delete();
+                        FileInfo fileInf = new FileInfo(path + deleteImg.FileName);
+                        if (fileInf.Exists)
+                        {
+                            fileInf.Delete();
+                        }
+                        Context.Images.Remove(deleteImg);
                     }
                     Context.Images.Add(image);
                     _doctor.Image = image;
-                    Context.Images.Remove(deleteImg);
                 }
                 _doctor.Name = _doctorEdit.Name;
                 _doctor.Surname = _doctorEdit.Surname;

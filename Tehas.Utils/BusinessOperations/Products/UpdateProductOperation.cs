@@ -53,14 +53,17 @@ namespace Klinik.Utils.BusinessOperations.Products
                         Url = url,
                     };
                     var deleteImg = _product.Image;
-                    FileInfo fileInf = new FileInfo(path + deleteImg.FileName);
-                    if (fileInf.Exists)
+                    if(deleteImg != null)
                     {
-                        fileInf.Delete();
+                        FileInfo fileInf = new FileInfo(path + deleteImg.FileName);
+                        if (fileInf.Exists)
+                        {
+                            fileInf.Delete();
+                        }
+                        Context.Images.Remove(deleteImg);
                     }
                     Context.Images.Add(image);
                     _product.Image = image;
-                    Context.Images.Remove(deleteImg);
                 }
                 _product.Title = _productEdit.Title;
                 _product.Description = _productEdit.Description;

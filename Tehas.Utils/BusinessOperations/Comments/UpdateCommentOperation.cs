@@ -55,14 +55,17 @@ namespace Klinik.Utils.BusinessOperations.Comments
                         Url = url,
                     };
                     var deleteImg = _comment.Image;
-                    FileInfo fileInf = new FileInfo(path + deleteImg.FileName);
-                    if (fileInf.Exists)
+                    if (deleteImg != null)
                     {
-                        fileInf.Delete();
+                        FileInfo fileInf = new FileInfo(path + deleteImg.FileName);
+                        if (fileInf.Exists)
+                        {
+                            fileInf.Delete();
+                        }
+                        Context.Images.Remove(deleteImg);
                     }
                     Context.Images.Add(image);
                     _comment.Image = image;
-                    Context.Images.Remove(deleteImg);
                 }
                 _comment.Company = comment.Company;
                 _comment.Username = comment.Username;
