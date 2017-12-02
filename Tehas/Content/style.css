@@ -30,6 +30,24 @@ video {
 source {
 	width: 100%;
 }
+
+.onvideo {
+    width: 68%;
+    left: 16%;
+    position: absolute;
+    top: 90px;
+}
+
+.onvideo p {
+    color: #af4aa2;
+    font-family: Calibri;
+    font-style: italic;
+    font-size: 26px;
+    font-weight: 400;
+    text-align: left;
+    line-height: 30px;
+}
+
 .header {
 	height: 80px;
 	width: 100%;
@@ -2006,6 +2024,10 @@ opacity: .1;}}
 }
 }
 @media screen and (max-width: 800px) {
+    .onvideo p {
+    font-size: 20px;
+    line-height:20px;
+}
 .adres {
      display: flex; 
      flex-direction: row; 
@@ -2247,8 +2269,14 @@ opacity: .1;}}
     margin-left: -43%;
     margin-top: -8px;
 }
-video {
+#video {
     display: none;
+}
+#video #videoSource {
+    display: none;
+}
+.onvideo {
+    display:none;
 }
 .service {
     max-width: 300px;
@@ -2604,7 +2632,7 @@ ul.carousel li {
     margin-left: -7px;
 }
 ._comment form button {
-    width: 308px;
+    width: 297px;
 }
 .social {
     display: flex;
@@ -2674,7 +2702,7 @@ video {
     margin-left: -16px;
 }
 ._comment form button {
-    width: 288px;
+    width: 276px;
     margin-left: 6px;
 }
 .contacts .info .point p {
