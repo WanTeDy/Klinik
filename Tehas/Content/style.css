@@ -10,6 +10,14 @@ a {
 	cursor: pointer;
 }
 
+#send_feedback{
+    color: #163dce;
+    font-size: 24px;
+    margin: 55px 0;
+    text-align: center;
+    text-transform: uppercase;
+}
+
 .ac-container .ac-small div {
 	flex-direction: row;
 	display: flex;
