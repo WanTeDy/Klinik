@@ -56,14 +56,36 @@
             }
         });
     </script>
+
+<!--<script>
+    if(screen.width > 550){
+    $('#video').html(videoHtml);
+}
+else{
+    $('#video').html(lowResVideoHtml);
+}
+</script>-->
+
+
+
+
 }
 <div class="video" controls="controls">
-    <video id="video" loop="loop" muted="muted">
+    <video id="video" loop="loop" controls controlsList="nodownload" muted preload="auto">
         <source id="videoSource" type='video/mp4;'>
     </video>
+
+
+    <div class="onvideo">
+        <p>Стоматология « KLINIK IM ZENTRUM»  - это созданный  только для Вас особый мир,
+            где на первом  месте Ваше здоровье и Вы превыше всего.
+            Добро пожаловать!</p><br /><p style="text-align:right;">С любовью к Вам « KLINIK IM ZENTRUM»</p>
+           
+    </div>
+
     <div class="social">
         <div class="fb"><a href="https://www.facebook.com/profile.php?id=100014429629385" target="_blank"></a></div>
-        <div class="insta"><a href="" target="_blank"></a></div>
+        <div class="insta"><a href="https://www.instagram.com/_klinikimzentrum_/" target="_blank"></a></div>
     </div>
 </div>
 
@@ -110,7 +132,7 @@
             @foreach (Product prod in ViewBag.Products)
             {
                 <li>
-                    <figure class="effect-sadie">
+                    <figure class="effect-sadie" style="cursor:pointer;" onclick="window.location.href = '/klinik/service/@prod.Id'">
                         @if (prod.Image != null)
                         {
                             <img src="@Url.Content(prod.Image.Url + prod.Image.FileName)" style="width:267px; height:274px;" />
