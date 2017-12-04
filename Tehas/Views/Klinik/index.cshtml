@@ -6,16 +6,18 @@
     @Scripts.Render("~/Scripts/jqueryval")
     <script>
         function SendMessageOnComplete(data, resul, xhr) {
-            if (data.Success) {
+            if (resul === "success") {
+                $('#send_message').toggle(500);
                 $('#email-mes').toggle(750, function () {
-                    $('#email-mes').toggle(3500);
+                    //$('#email-mes').toggle(3500);
                 });
             }
-        }        
+        }
         function SendFeedbackOnComplete(data, resul, xhr) {
-            if (data.Success) {
+            if (resul === "success") {
+                $('#send_feedback').toggle(500);
                 $('#feedback-mes').toggle(750, function () {
-                    $('#feedback-mes').toggle(3500);
+                    //$('#feedback-mes').toggle(3500);
                 });
             }
         }
@@ -57,14 +59,14 @@
         });
     </script>
 
-<!--<script>
-    if(screen.width > 550){
-    $('#video').html(videoHtml);
-}
-else{
-    $('#video').html(lowResVideoHtml);
-}
-</script>-->
+    <!--<script>
+        if(screen.width > 550){
+        $('#video').html(videoHtml);
+    }
+    else{
+        $('#video').html(lowResVideoHtml);
+    }
+    </script>-->
 
 
 
@@ -77,10 +79,12 @@ else{
 
 
     <div class="onvideo">
-        <p>Стоматология « KLINIK IM ZENTRUM»  - это созданный  только для Вас особый мир,
+        <p>
+            Стоматология « KLINIK IM ZENTRUM»  - это созданный  только для Вас особый мир,
             где на первом  месте Ваше здоровье и Вы превыше всего.
-            Добро пожаловать!</p><br /><p style="text-align:right;">С любовью к Вам « KLINIK IM ZENTRUM»</p>
-           
+            Добро пожаловать!
+        </p><br /><p style="text-align:right;">С любовью к Вам « KLINIK IM ZENTRUM»</p>
+
     </div>
 
     <div class="social">

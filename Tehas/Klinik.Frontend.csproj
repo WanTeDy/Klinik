@@ -338,7 +338,7 @@
     <Content Include="Views\Shared\Menu\_listOfProducts.cshtml" />
     <Content Include="Views\Shared\Partial\_cartList.cshtml" />
     <Content Include="Views\Shared\Comments\_listOfComments.cshtml" />
-    <Content Include="Views\MailTemplate\OrderMailView.cshtml" />
+    <Content Include="Views\MailTemplate\SupportMailView.cshtml" />
     <Content Include="Views\Shared\Partial\_header.cshtml" />
     <Content Include="Views\Shared\Partial\_footer.cshtml" />
     <Content Include="Views\Klinik\_message.cshtml" />

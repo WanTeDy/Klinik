@@ -41,9 +41,10 @@
         //$('a[href="#a"]').trigger('click');
 
         function SendMessageOnCompleteModal(data, resul, xhr) {
-            if (data.Success) {
+            if (resul === "success") {
+                $('#send_message-modal').toggle(500)
                 $('#email-mes-modal').toggle(750, function () {
-                    $('#email-mes-modal').toggle(3500);
+                    //$('#email-mes-modal').toggle(3500);
                 });
             }
         }
