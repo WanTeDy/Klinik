@@ -59,21 +59,9 @@
         });
     </script>
 
-    <!--<script>
-        if(screen.width > 550){
-        $('#video').html(videoHtml);
-    }
-    else{
-        $('#video').html(lowResVideoHtml);
-    }
-    </script>-->
-
-
-
-
 }
 <div class="video" controls="controls">
-    <video id="video" loop="loop" controls controlsList="nodownload" muted preload="auto">
+    <video id="video" loop="loop" controls controlsList="nodownload" preload="none">
         <source id="videoSource" type='video/mp4;'>
     </video>
 
