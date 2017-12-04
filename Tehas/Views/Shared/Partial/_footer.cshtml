@@ -25,7 +25,7 @@
     <div>
         <a href="#close" title="Закрыть" class="close">X</a>
         <div id="send_message-modal">
-            @Html.Partial("_message-modal")
+            @Html.Partial("_message-modal", new Klinik.Frontend.Models.EmailModel())
         </div>        
         <p id="email-mes-modal" style="display:none">Мы свяжемся с вами в ближайшее время!</p>
     </div>
