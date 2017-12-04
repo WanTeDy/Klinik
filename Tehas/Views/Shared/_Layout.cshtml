@@ -39,6 +39,14 @@
 
         //// Trigger first section animation
         //$('a[href="#a"]').trigger('click');
+
+        function SendMessageOnCompleteModal(data, resul, xhr) {
+            if (data.Success) {
+                $('#email-mes-modal').toggle(750, function () {
+                    $('#email-mes-modal').toggle(3500);
+                });
+            }
+        }
         $(function () {
             $(window).scroll(function () {
                 if ($(this).scrollTop() != 0) {
