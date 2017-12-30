@@ -24,15 +24,9 @@
 <div id="openModal" class="modalDialog">
     <div>
         <a href="#close" title="Закрыть" class="close">X</a>
-        <form id="application" action="#" method="POST" name=" application ">
-
-            <div class="formflex_contact">
-                <h4>Ваши контактные данные:</h4>
-                <input name="name" id="applicationName" maxlength="25" placeholder="Имя" required />
-                <input name="telephone" type="Tel" id="applicationTelephone" maxlength="20" placeholder="Телефон" required />
-            </div>
-            <button class="applicationButton" type="submit" form="application">Отправить</button>
-        </form>
-        <p>Мы свяжемся с вами в ближайшее время!</p>
+        <div id="send_message-modal">
+            @Html.Partial("_message-modal", new Klinik.Frontend.Models.EmailModel())
+        </div>        
+        <p id="email-mes-modal" style="display:none">Мы свяжемся с вами в ближайшее время!</p>
     </div>
 </div>

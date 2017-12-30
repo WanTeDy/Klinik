@@ -1,0 +1,20 @@
+﻿@model Klinik.Frontend.Models.EmailModel
+
+@using (Ajax.BeginForm("SendMessage", "Klinik", null, new AjaxOptions
+{
+    //UpdateTargetId = "send_message-modal",
+    OnSuccess = "SendMessageOnCompleteModal"
+}, new { @id = "message-form-modal" }))
+
+{
+
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <div class="formflex_contact">
+        <h4>Ваши контактные данные:</h4>
+        @Html.TextBoxFor(x => x.Name, new { @placeholder = "Имя" })
+        @Html.TextBoxFor(x => x.Email, new { @placeholder = "Email" })
+        @Html.TextBoxFor(x => x.Phone, new { @placeholder = "Телефон" })
+    </div>
+    <button class="applicationButton" type="submit" form="message-form-modal">Отправить</button>
+}

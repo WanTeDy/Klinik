@@ -6,16 +6,18 @@
     @Scripts.Render("~/Scripts/jqueryval")
     <script>
         function SendMessageOnComplete(data, resul, xhr) {
-            if (data.Success) {
+            if (resul === "success") {
+                $('#send_message').toggle(500);
                 $('#email-mes').toggle(750, function () {
-                    $('#email-mes').toggle(3500);
+                    //$('#email-mes').toggle(3500);
                 });
             }
         }
         function SendFeedbackOnComplete(data, resul, xhr) {
-            if (data.Success) {
+            if (resul === "success") {
+                $('#send_feedback').toggle(500);
                 $('#feedback-mes').toggle(750, function () {
-                    $('#feedback-mes').toggle(3500);
+                    //$('#feedback-mes').toggle(3500);
                 });
             }
         }
@@ -57,30 +59,20 @@
         });
     </script>
 
-<!--<script>
-    if(screen.width > 550){
-    $('#video').html(videoHtml);
-}
-else{
-    $('#video').html(lowResVideoHtml);
-}
-</script>-->
-
-
-
-
 }
 <div class="video" controls="controls">
-    <video id="video" loop="loop" controls controlsList="nodownload" muted preload="auto">
+    <video id="video" loop="loop" controls controlsList="nodownload" preload="none">
         <source id="videoSource" type='video/mp4;'>
     </video>
 
 
     <div class="onvideo">
-        <p>Стоматология « KLINIK IM ZENTRUM»  - это созданный  только для Вас особый мир,
+        <p>
+            Стоматология « KLINIK IM ZENTRUM»  - это созданный  только для Вас особый мир,
             где на первом  месте Ваше здоровье и Вы превыше всего.
-            Добро пожаловать!</p><br /><p style="text-align:right;">С любовью к Вам « KLINIK IM ZENTRUM»</p>
-           
+            Добро пожаловать!
+        </p><br /><p style="text-align:right;">С любовью к Вам « KLINIK IM ZENTRUM»</p>
+
     </div>
 
     <div class="social">
@@ -109,19 +101,19 @@ else{
     <div class="advantages_wrapper">
         <div class="part1">
             <h4>Качество</h4>
-            <p>empor incididunt ut labore et dolore magna aliqua.</p>
+            <p>Мы уделяем много времени и средств вопросам дезинфекции и стерилизации. Мы следим за здоровьем наших сотрудников, они систематически проходят медицинские осмотры и делают прививки. Средства дезинфекции в стоматологии «KLINIK IM ZENTRUM» соответствуют европейским стандартам , они способны обезвредить все известные вирусы и микробы.</p>
         </div>
         <div class="part2">
             <h4>Гарантия</h4>
-            <p>empor incididunt ut labore et dolore magna aliqua.</p>
+            <p>Исполнитель несет ответственность по гарантийным обязательствам только при условии соблюдения пациентом всех норм и правил, а также всех рекомендаций врача.</p>
         </div>
         <div class="part3">
             <h4>Цена</h4>
-            <p>empor incididunt ut labore et dolore magna aliqua.</p>
+            <p>Всегда рады помочь нашим пациентам, оказав услуги высочайшего качества по отличным ценам. После консультации вы получите детальный план лечения с указанием точной стоимости услуг стоматологии.</p>
         </div>
         <div class="part4">
             <h4>Сервис</h4>
-            <p>empor incididunt ut labore et dolore magna aliqua.</p>
+            <p>Наше первое знакомство произойдет по телефону. Вас внимательно выслушают, ответят на все ваши вопросы и подберут удобное время для записи. Для вашего удобства, мы заранее напомним вам о времени вашего визита. Зайдя в стоматологию «KLINIK IM ZENTRUM» вы погрузитесь в атмосферу уюта и покоя, которую дополнят чашечка ароматного чая или кофе.</p>
         </div>
     </div>
 </div>
@@ -321,7 +313,7 @@ else{
 </div>
 <div class="_comment" style="display:none;">
     <div id="send_feedback">
-        @Html.Partial("_feedback")
+        @Html.Partial("_feedback", new Klinik.Utils.DataBase.Emails.Comment())
     </div>
     <p id="feedback-mes" style="display:none;">Спасибо за ваш отзыв!</p>
 </div>

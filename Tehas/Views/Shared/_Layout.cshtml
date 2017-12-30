@@ -39,6 +39,15 @@
 
         //// Trigger first section animation
         //$('a[href="#a"]').trigger('click');
+
+        function SendMessageOnCompleteModal(data, resul, xhr) {
+            if (resul === "success") {
+                $('#send_message-modal').toggle(500)
+                $('#email-mes-modal').toggle(750, function () {
+                    //$('#email-mes-modal').toggle(3500);
+                });
+            }
+        }
         $(function () {
             $(window).scroll(function () {
                 if ($(this).scrollTop() != 0) {
@@ -82,8 +91,10 @@
 
             mp4.src = "/Content/video/about.mp4";
 
-            video.load();
-            video.play();
+            if (screen.width > 550) {
+                video.load();
+                video.play();
+            }
         });
     </script>
 </body>
