@@ -11,7 +11,8 @@ namespace Klinik.Utils.DataBase.Products
         /// <summary>
         /// Title's name for this product
         /// </summary>
-        public String Title { get; set; }        
+        public String Title { get; set; }
+        public String Tag { get; set; }
         /// <summary>
         /// Discription for this product
         /// </summary>

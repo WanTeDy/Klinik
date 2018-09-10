@@ -17,6 +17,8 @@ namespace Klinik.Frontend.Controllers
 {
     public class KlinikController : Controller
     {
+        private static Dictionary<string, int> ServiceIds { get; set; }
+
         public ActionResult Index()
         {
             var op = new LoadAllDoctorsOperation();
@@ -38,12 +40,36 @@ namespace Klinik.Frontend.Controllers
             ViewBag.NavMenuEnabled = false;
             return View(op._doctor);
         }
-        public ActionResult Service(int? id)
+
+        public ActionResult Service(int id)
         {
+            if (id <= 0)
+                return HttpNotFound();
+
             var op = new LoadAllProductsOperation();
             op.ExcecuteTransaction();
             ViewBag.NavMenuEnabled = false;
-            ViewBag.Selected = op._products.FirstOrDefault(x => x.Id == id.GetValueOrDefault()) ?? op._products.FirstOrDefault();
+            var service = op._products.FirstOrDefault(x => x.Id == id);
+            if (service == null)
+                return HttpNotFound();
+
+            return RedirectToRoute(service.Tag);
+        }
+
+        [Route("{serviceName}")]
+        public ActionResult Service(string serviceName)
+        {
+            if (string.IsNullOrEmpty(serviceName))
+                return HttpNotFound();
+
+            var op = new LoadAllProductsOperation();
+            op.ExcecuteTransaction();
+            ViewBag.NavMenuEnabled = false;
+            var service = op._products.FirstOrDefault(x => x.Tag == serviceName.ToLower());
+            if (service == null)
+                return HttpNotFound();
+
+            ViewBag.Selected = service;
             return View(op._products);
         }
 

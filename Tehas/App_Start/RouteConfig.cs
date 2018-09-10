@@ -12,10 +12,10 @@ namespace Klinik.Frontend
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-
+            routes.MapMvcAttributeRoutes();
             routes.MapRoute(
                 "Default",
-                "{controller}/{action}/{id}",
+                "{action}/{id}",
                 new { controller = "Klinik", action = "Index", id = UrlParameter.Optional },
                 new[] { "Klinik.Frontend.Controllers" }
             );

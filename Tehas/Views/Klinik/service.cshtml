@@ -36,7 +36,11 @@
                 <div class="links">
                     @foreach (var pr in Model)
                     {
-                        <a href="#" onclick="setProd('@(pr.Image!= null? Url.Content(pr.Image.Url + pr.Image.FileName) : "")','@pr.Title', '@(pr.Description?.Replace(Environment.NewLine, " "))')">@pr.Title</a>
+                        if (pr.Id != selected.Id)
+                        {
+                            <a href="/@pr.Tag"></a>
+                        }
+                        @*<a href="#" onclick="setProd('@(pr.Image!= null? Url.Content(pr.Image.Url + pr.Image.FileName) : "")','@pr.Title', '@(pr.Description?.Replace(Environment.NewLine, " "))')">@pr.Title</a>*@
                     }
                 </div>
             </div>

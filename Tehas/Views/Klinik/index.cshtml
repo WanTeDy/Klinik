@@ -124,14 +124,14 @@
             @foreach (Product prod in ViewBag.Products)
             {
                 <li>
-                    <figure class="effect-sadie" style="cursor:pointer;" onclick="window.location.href = '/klinik/service/@prod.Id'">
+                    <figure class="effect-sadie" style="cursor:pointer;" onclick="window.location.href = '/@prod.Tag'">
                         @if (prod.Image != null)
                         {
                             <img src="@Url.Content(prod.Image.Url + prod.Image.FileName)" style="width:267px; height:274px;" />
                         }
                         <figcaption>
                             <h2>@prod.Title.Substring(0, prod.Title.Length / 2)<span>@prod.Title.Substring(prod.Title.Length / 2, prod.Title.Length - (prod.Title.Length / 2))</span></h2>
-                            <p><a href="/klinik/service/@prod.Id">Подробнее</a></p>
+                            <p><a href="/@prod.Tag">Подробнее</a></p>
                         </figcaption>
                     </figure>
                 </li>
@@ -248,9 +248,9 @@
             @foreach (Doctor doc in ViewBag.Doctors)
             {
                 <li>
-                    <a href="/klinik/doctor/@doc.Id"><img src="@Url.Content(doc.Image.Url + doc.Image.FileName)" alt="" /></a>
+                    <a href=" /doctor/@doc.Id"><img src="@Url.Content(doc.Image.Url + doc.Image.FileName)" alt="" /></a>
                     <div class="info">
-                        <h4><a href="/klinik/doctor/@doc.Id">@doc.ShortName</a></h4>
+                        <h4><a href="/doctor/@doc.Id">@doc.ShortName</a></h4>
                         <h5>@doc.Position</h5>
                         <p>@doc.Slogan</p>
                     </div>
