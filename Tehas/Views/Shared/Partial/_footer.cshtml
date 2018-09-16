@@ -1,13 +1,12 @@
 ﻿<div class="footer">
     <div class="logo2">
-        <a href="/"><img src="~/Content/images/logo2.png">
-        </a>
+        <a href="/"><img src="~/Content/images/logo2.png"></a>
     </div>
     <div class="social1">
-        <div class="fb"><a href="https://www.facebook.com/profile.php?id=100014429629385" target="_blank"></a></div>
-        <div class="insta"><a href="https://www.instagram.com/_klinikimzentrum_/" target="_blank"></a></div>
+        <div class="fb"><noindex><a href="https://www.facebook.com/profile.php?id=100014429629385" target="_blank" rel="nofollow"></a></noindex></div>
+        <div class="insta"><noindex><a href="https://www.instagram.com/_klinikimzentrum_/" target="_blank" rel="nofollow"></a></noindex></div>
     </div>
-    <p>© 2017 Web-студия <a href="http://web-galaxy.com.ua" target="_blank">"Web Galaxy"</a></p>
+    <p>© 2017 Web-студия <noindex><a href="http://web-galaxy.com.ua" target="_blank" rel="nofollow">"Web Galaxy"</a></noindex></p>
     <div id="toTop">↑</div>
     <a href="#" id="popup__toggle" onclick="return false;">
         <div class="circlephone" style="transform-origin: center;">
@@ -26,7 +25,7 @@
         <a href="#close" title="Закрыть" class="close">X</a>
         <div id="send_message-modal">
             @Html.Partial("_message-modal", new Klinik.Frontend.Models.EmailModel())
-        </div>        
+        </div>
         <p id="email-mes-modal" style="display:none">Мы свяжемся с вами в ближайшее время!</p>
     </div>
 </div>

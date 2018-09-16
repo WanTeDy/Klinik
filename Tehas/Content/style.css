@@ -205,8 +205,6 @@ nav.codrops-demos a:hover {
 	margin-top: 83px;
 	margin-bottom: 40px;
 }
-
-
 .h2 h2:before {
   content: " ";
   position: absolute;
@@ -225,8 +223,48 @@ nav.codrops-demos a:hover {
   background: #81787e;
   z-index: -1;
   width: 76px;
+  margin-left: 15px;
+}
+.h2 h1 {
+	    font-family: Calibri, sans-serif;
+	font-size: 30px;
+	font-weight: 400;
+	text-transform: uppercase;
+
+	color: #b6bbbd;
+
+	position: relative;
+	padding: 0 20px;
+}
+.h2 h1 span.blue {
+	color: #163dce;
+}
+.h1 {
+	text-align: center;
+	margin-top: 83px;
+	margin-bottom: 40px;
+}
+.h2 h1:before {
+  content: " ";
+  position: absolute;
+  top: calc(50% - 1px);
+  margin-left: -55px;
+  height: 1.7px;
+  background: #81787e;
+  z-index: -1;
+  width: 40px;
+}
+.h2 h1:after {
+  content: "";
+  position: absolute;
+  top: calc(50% - 1px); 
+  height: 1.7px;
+  background: #81787e;
+  z-index: -1;
+  width: 76px;
   margin-left: -3px;
 }
+
 /*wrapper*/
 .wrapper {
 	/*max-width: 1366px;*/
@@ -1602,21 +1640,14 @@ opacity: .1;}}
 	max-width: 1066px;
 	width: 100%;
 	margin: auto;
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-box-orient: horizontal;
-	-webkit-box-direction: normal;
-	    -ms-flex-direction: row;
-	        flex-direction: row;
-	-webkit-box-pack: center;
-	    -ms-flex-pack: center;
-	        justify-content: center;
 }
 .service .picture {
 	position: relative;
 	width: 336px;
 	height: 446px;
+	float:left;
+	margin-right:35px;
+	margin-bottom:35px;
 }
 .service .picture img {
 	width: 336px;
@@ -1654,6 +1685,20 @@ opacity: .1;}}
 	padding: 0 20px;
 }
 .h22 h3 span.blue {
+	color: #163dce;
+}
+.h22 h1 {
+	    font-family: Calibri, sans-serif;
+	font-size: 30px;
+	font-weight: 400;
+	text-transform: uppercase;
+
+	color: #b6bbbd;
+
+	position: relative;
+	padding: 0 20px;
+}
+.h22 h1 span.blue {
 	color: #163dce;
 }
 .h22 {
@@ -2547,6 +2592,10 @@ opacity: .1;}}
     font-size: 18px;
     font-weight: 600;
 }
+.h2 h1 {
+    font-size: 18px;
+    font-weight: 600;
+}
 .ac-container div {
     width: 442px;
     margin-bottom: 8px;
@@ -2595,6 +2644,7 @@ opacity: .1;}}
     position: relative;
     width: 300px;
     height: 390px;
+	float:none;
 }
 .service .picture img {
     width: 300px;
@@ -2648,6 +2698,15 @@ opacity: .1;}}
     text-align: center;
 }
 .h22 h3 {
+        font-family: Calibri, sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: #b6bbbd;
+    position: relative;
+    padding: 0 20px;
+}
+.h22 h1 {
         font-family: Calibri, sans-serif;
     font-size: 24px;
     font-weight: 400;

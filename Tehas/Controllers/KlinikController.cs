@@ -1,17 +1,12 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Collections.Generic;
-using System.Web;
 using System.Web.Mvc;
-using Klinik.Frontend.Helpers;
 using Klinik.Frontend.Models;
 using Klinik.Utils.DataBase.Emails;
 using Klinik.Utils.BusinessOperations.Comments;
 using Klinik.Utils.BusinessOperations.Orders;
 using Klinik.Utils.BusinessOperations.Doctors;
 using Klinik.Utils.BusinessOperations.Products;
-using Klinik.Utils.BusinessOperations;
-using Klinik.Utils.BusinessOperations.Users;
 
 namespace Klinik.Frontend.Controllers
 {
@@ -41,6 +36,7 @@ namespace Klinik.Frontend.Controllers
             return View(op._doctor);
         }
 
+        [Route("[controller]/[action]/{id}")]
         public ActionResult Service(int id)
         {
             if (id <= 0)
@@ -57,7 +53,7 @@ namespace Klinik.Frontend.Controllers
         }
 
         [Route("{serviceName}")]
-        public ActionResult Service(string serviceName)
+        public ActionResult ServiceName(string serviceName)
         {
             if (string.IsNullOrEmpty(serviceName))
                 return HttpNotFound();
@@ -70,7 +66,7 @@ namespace Klinik.Frontend.Controllers
                 return HttpNotFound();
 
             ViewBag.Selected = service;
-            return View(op._products);
+            return View("Service", op._products);
         }
 
         [ValidateAntiForgeryToken]

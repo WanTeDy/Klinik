@@ -15,7 +15,7 @@
         };
     </script>
 }
-<div class="h22"><h3>Услуги и <span class="blue">цены</span></h3></div>
+<div class="h22"><h1 id="title">@selected.Title.Substring(0, selected.Title.Length / 2)<span class="blue">@selected.Title.Substring(selected.Title.Length / 2, selected.Title.Length - (selected.Title.Length / 2))</span></h1></div>
 
 <div class="doctor">
 
@@ -28,27 +28,26 @@
                     {
                         <img src="@Url.Content(selected.Image.Url + selected.Image.FileName)" alt="" />
                     }
-                    <div class="h3"><h3>@selected.Title</h3></div>
+                    <div class="h3"><h1>@selected.Title</h1></div>
                 </div>
             }
+            <p>@Html.Raw(selected.Description)</p>
 
-            <div class="info">
-                <div class="links">
-                    @foreach (var pr in Model)
-                    {
-                        if (pr.Id != selected.Id)
-                        {
-                            <a href="/@pr.Tag"></a>
-                        }
-                        @*<a href="#" onclick="setProd('@(pr.Image!= null? Url.Content(pr.Image.Url + pr.Image.FileName) : "")','@pr.Title', '@(pr.Description?.Replace(Environment.NewLine, " "))')">@pr.Title</a>*@
-                    }
-                </div>
-            </div>
         </div>
     </div>
 
-    <div class="h22"><h3 id="title">@selected.Title.Substring(0, selected.Title.Length / 2)<span class="blue">@selected.Title.Substring(selected.Title.Length / 2, selected.Title.Length - (selected.Title.Length / 2))</span></h3></div>
     <div class="text1">
-        <p>@Html.Raw(selected.Description)</p>
+        <div class="info">
+            <div class="links">
+                @foreach (var pr in Model)
+                {
+                    if (pr.Id != selected.Id)
+                    {
+                        <a href="/@pr.Tag">@pr.Title</a>
+                    }
+                    @*<a href="#" onclick="setProd('@(pr.Image!= null? Url.Content(pr.Image.Url + pr.Image.FileName) : "")','@pr.Title', '@(pr.Description?.Replace(Environment.NewLine, " "))')">@pr.Title</a>*@
+                }
+            </div>
+        </div>
     </div>
 </div>
